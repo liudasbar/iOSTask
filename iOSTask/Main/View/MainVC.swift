@@ -7,11 +7,7 @@
 
 import UIKit
 
-protocol ViewControllerDelegate: AnyObject {
-    func selectedCell(row: Int)
-}
-
-class MainVC: UIViewController, Activity, ViewControllerDelegate {
+class MainVC: UIViewController, Activity, UITableViewDelegate {
     
     var mainViewModel: MainViewModel!
     var dataSource: MainTableViewDataSource?
@@ -39,8 +35,7 @@ class MainVC: UIViewController, Activity, ViewControllerDelegate {
     
     /// Delegates init
     func delegatesInit() {
-        let tableViewDelegate = MainTableViewDelegate(withDelegate: self)
-        tableView.delegate = tableViewDelegate
+        tableView.delegate = self
         
         mainViewModel.delegate = self
         
@@ -73,9 +68,10 @@ class MainVC: UIViewController, Activity, ViewControllerDelegate {
         }
     }
     
-    func selectedCell(row: Int) {
-        print("CELL TAPPED")
-        print(row)
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        print("Aaa")
+        
+        tableView.deselectRow(at: indexPath, animated: true)
     }
     
     /// Data started fetching - start refresh animations

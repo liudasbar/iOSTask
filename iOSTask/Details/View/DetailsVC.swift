@@ -8,7 +8,7 @@
 import UIKit
 import MessageUI
 
-class DetailsVC: UIViewController, MFMailComposeViewControllerDelegate, ImageActivity, ViewControllerDelegate {
+class DetailsVC: UIViewController, MFMailComposeViewControllerDelegate, ImageActivity, UITableViewDelegate {
 
     let mail = Mail()
     var detailsViewModel: DetailsViewModel!
@@ -60,8 +60,7 @@ class DetailsVC: UIViewController, MFMailComposeViewControllerDelegate, ImageAct
     
     /// Delegates init
     func delegatesInit() {
-        let tableViewDelegate = MainTableViewDelegate(withDelegate: self)
-        tableView.delegate = tableViewDelegate
+        tableView.delegate = self
         
         mail.delegate = self
     }

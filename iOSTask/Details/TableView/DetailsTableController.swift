@@ -8,30 +8,6 @@
 import Foundation
 import UIKit
 
-/// Table view delegate
-class DetailsTableViewDelegate: NSObject, UITableViewDelegate {
-    
-    weak var delegate: ViewControllerDelegate?
-    
-    init(withDelegate delegate: ViewControllerDelegate) {
-        self.delegate = delegate
-    }
-    
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        delegate?.selectedCell(row: indexPath.row)
-        tableView.deselectRow(at: indexPath, animated: true)
-    }
-    
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        if indexPath.row == 0 {
-            return 140
-        } else {
-            return 60
-        }
-    }
-}
-
-
 /// Table view data source
 class DetailsTableViewDataSource: NSObject, UITableViewDataSource {
     

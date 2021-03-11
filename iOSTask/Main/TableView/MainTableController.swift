@@ -7,22 +7,6 @@
 
 import UIKit
 
-/// Table view delegate
-class MainTableViewDelegate: NSObject, UITableViewDelegate {
-    
-    weak var delegate: ViewControllerDelegate?
-    
-    init(withDelegate delegate: ViewControllerDelegate) {
-        self.delegate = delegate
-    }
-    
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        delegate?.selectedCell(row: indexPath.row)
-        tableView.deselectRow(at: indexPath, animated: true)
-    }
-}
-
-
 /// Table view data source
 class MainTableViewDataSource: NSObject, UITableViewDataSource {
     
