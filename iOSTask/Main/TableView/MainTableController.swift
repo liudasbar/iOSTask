@@ -8,7 +8,7 @@
 import UIKit
 
 /// Table view delegate
-class TableViewDelegate: NSObject, UITableViewDelegate {
+class MainTableViewDelegate: NSObject, UITableViewDelegate {
     
     weak var delegate: ViewControllerDelegate?
     
@@ -24,7 +24,7 @@ class TableViewDelegate: NSObject, UITableViewDelegate {
 
 
 /// Table view data source
-class TableViewDataSource: NSObject, UITableViewDataSource {
+class MainTableViewDataSource: NSObject, UITableViewDataSource {
     
     var posts = MainViewModel().postsData
     var usersDetails = MainViewModel().usersData
