@@ -8,37 +8,24 @@
 import UIKit
 import MessageUI
 
-class DetailsVC: UIViewController, MFMailComposeViewControllerDelegate, ImageActivity {
+class DetailsVC: UIViewController, MFMailComposeViewControllerDelegate, ImageActivity, ViewControllerDelegate {
 
     let mail = Mail()
     var detailsViewModel: DetailsViewModel!
+    var mainViewModel: MainViewModel!
     
-    @IBOutlet weak var infoView: UIView!
+    var dataSource: DetailsTableViewDataSource?
     
-    @IBOutlet weak var nameLabel: UILabel!
+    var userID = Int()
     
-    @IBOutlet weak var imageView: UIImageView!
+    @IBOutlet weak var tableView: UITableView!
     
-    //Email button
-    @IBOutlet weak var emailButton: UIButton!
-    @IBAction func emailButtonAction(_ sender: UIButton) {
-        mail.sendMail(sender.title(for: .normal)!)
-    }
-    
-    @IBOutlet weak var locationButton: UIButton!
-    @IBAction func locationButtonAction(_ sender: UIButton) {
-        launchGoogleMaps(String(), String()) //ADD REAL COORDINATES
-    }
-    
-    //Call button
-    @IBOutlet weak var callButton: UIButton!
-    @IBAction func callButtonAction(_ sender: UIButton) {
-    }
+    var imageViewData = Data()
     
     
     override func viewDidAppear(_ animated: Bool) {
         UIView.animate(withDuration: 0.3) {
-            self.infoView.alpha = 1
+            //self.infoView.alpha = 1
         }
     }
     
@@ -46,6 +33,7 @@ class DetailsVC: UIViewController, MFMailComposeViewControllerDelegate, ImageAct
         super.viewDidLoad()
         
         detailsViewModel = DetailsViewModel()
+        mainViewModel = MainViewModel()
         
         delegatesInit()
         designInit()
@@ -56,20 +44,53 @@ class DetailsVC: UIViewController, MFMailComposeViewControllerDelegate, ImageAct
     
     /// Design init
     func designInit() {
-        infoView.alpha = 0
-        
-        imageView.layer.cornerRadius = 40
-        imageView.clipsToBounds = true
+        let navBar = UINavigationBar(frame: CGRect(x: 0, y: 0, width: view.frame.size.width, height: 50))
+        view.addSubview(navBar)
+
+        let navItem = UINavigationItem(title: "User details")
+        let doneItem = UIBarButtonItem(barButtonSystemItem: .close, target: nil, action: #selector(dismissView))
+        navItem.leftBarButtonItem = doneItem
+
+        navBar.setItems([navItem], animated: false)
+    }
+    
+    @objc func dismissView() {
+        dismiss(animated: true, completion: nil)
     }
     
     /// Delegates init
     func delegatesInit() {
+        let tableViewDelegate = MainTableViewDelegate(withDelegate: self)
+        tableView.delegate = tableViewDelegate
+        
         mail.delegate = self
+    }
+    
+    func selectedCell(row: Int) {
+        print(row)
+    }
+    
+    func askForImage() {
+        detailsViewModel.bindImageData = {
+            self.mainViewModel.bindUserData = {
+                DispatchQueue.main.async {
+                    
+                    self.dataSource = DetailsTableViewDataSource(withData: self.mainViewModel.usersData, imageData: self.detailsViewModel.imageData)
+                    self.tableView.dataSource = self.dataSource
+                    
+                    self.tableView.reloadData()
+                }
+            }
+        }
     }
     
     /// Load image onto the imageView
     func loadImage(imageData: Data) {
-        imageView.image = UIImage(data: imageData)
+        imageViewData = imageData
+    }
+    
+    func loadUserID(userID: Int) {
+        self.userID = userID
     }
     
     /// Display error alert
