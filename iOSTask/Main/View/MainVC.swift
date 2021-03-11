@@ -14,7 +14,7 @@ protocol ViewControllerDelegate: AnyObject {
 class MainVC: UIViewController, Activity, ViewControllerDelegate {
     
     var mainViewModel: MainViewModel!
-    var dataSource: TableViewDataSource?
+    var dataSource: MainTableViewDataSource?
     
     var refreshControl = UIRefreshControl()
     
@@ -39,7 +39,7 @@ class MainVC: UIViewController, Activity, ViewControllerDelegate {
     
     /// Delegates init
     func delegatesInit() {
-        let tableViewDelegate = TableViewDelegate(withDelegate: self)
+        let tableViewDelegate = MainTableViewDelegate(withDelegate: self)
         tableView.delegate = tableViewDelegate
         
         mainViewModel.delegate = self
@@ -50,7 +50,7 @@ class MainVC: UIViewController, Activity, ViewControllerDelegate {
     /// Design init
     func designInit() {
         loadingIndicator.alpha = 1
-        tableView.decelerationRate = .fast
+        tableView.decelerationRate = .normal
     }
     
     /// Initial data fetch
@@ -64,7 +64,7 @@ class MainVC: UIViewController, Activity, ViewControllerDelegate {
             self.mainViewModel.bindUserData = {
                 DispatchQueue.main.async {
                     
-                    self.dataSource = TableViewDataSource(withData: self.mainViewModel.postsData, usersDetails: self.mainViewModel.usersData)
+                    self.dataSource = MainTableViewDataSource(withData: self.mainViewModel.postsData, usersDetails: self.mainViewModel.usersData)
                     self.tableView.dataSource = self.dataSource
                     
                     self.tableView.reloadData()
