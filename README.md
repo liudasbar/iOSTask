@@ -1,7 +1,8 @@
 # iOSTask
 iOS Junior position task
 
-Contact:
+
+## Contact:
 
 E-mail: me@liudasbar.dev
 
