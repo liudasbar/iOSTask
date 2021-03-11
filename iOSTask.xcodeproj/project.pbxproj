@@ -14,6 +14,7 @@
 		F42AD31425F91C5000D09BCC /* UserDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = F42AD31325F91C5000D09BCC /* UserDetails.swift */; };
 		F42AD31925F9205B00D09BCC /* FetchPosts.swift in Sources */ = {isa = PBXBuildFile; fileRef = F42AD31825F9205B00D09BCC /* FetchPosts.swift */; };
 		F42AD35525F9297400D09BCC /* TableController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F42AD35425F9297400D09BCC /* TableController.swift */; };
+		F4589EE425FA32EC00059CE5 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = F4589EE325FA32EC00059CE5 /* README.md */; };
 		F49F285025F913C30036D68D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F49F284F25F913C30036D68D /* AppDelegate.swift */; };
 		F49F285225F913C30036D68D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F49F285125F913C30036D68D /* SceneDelegate.swift */; };
 		F49F285425F913C30036D68D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F49F285325F913C30036D68D /* ViewController.swift */; };
@@ -58,6 +59,7 @@
 		F42AD31325F91C5000D09BCC /* UserDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDetails.swift; sourceTree = "<group>"; };
 		F42AD31825F9205B00D09BCC /* FetchPosts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchPosts.swift; sourceTree = "<group>"; };
 		F42AD35425F9297400D09BCC /* TableController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableController.swift; sourceTree = "<group>"; };
+		F4589EE325FA32EC00059CE5 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = SOURCE_ROOT; };
 		F49F284C25F913C30036D68D /* iOSTask.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iOSTask.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F49F284F25F913C30036D68D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F49F285125F913C30036D68D /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -198,6 +200,7 @@
 				F49F284F25F913C30036D68D /* AppDelegate.swift */,
 				F49F285125F913C30036D68D /* SceneDelegate.swift */,
 				F49F285325F913C30036D68D /* ViewController.swift */,
+				F4589EE325FA32EC00059CE5 /* README.md */,
 				F42AD2FA25F9179A00D09BCC /* Main */,
 				F4AC30A425F9752800D73103 /* Details */,
 				F49F285525F913C30036D68D /* Main.storyboard */,
@@ -385,6 +388,7 @@
 			files = (
 				F49F285C25F913C70036D68D /* LaunchScreen.storyboard in Resources */,
 				F49F285925F913C70036D68D /* Assets.xcassets in Resources */,
+				F4589EE425FA32EC00059CE5 /* README.md in Resources */,
 				F49F285725F913C30036D68D /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
