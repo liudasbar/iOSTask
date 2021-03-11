@@ -18,6 +18,14 @@ class DetailsViewModel: NSObject {
     private var API: FetchImage!
     var delegate: ImageActivity?
     
+    private(set) var imageData: Data! {
+        didSet {
+            self.bindImageData()
+        }
+    }
+    
+    var bindImageData: (() -> ()) = {}
+    
     override init() {
         super.init()
         
