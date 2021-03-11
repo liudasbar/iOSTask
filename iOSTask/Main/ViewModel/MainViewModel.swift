@@ -29,7 +29,6 @@ class MainViewModel: NSObject {
     
     private(set) var usersData: UsersDetails! = [] {
         didSet {
-            //Notifies the view about users data changes
             self.bindUserData()
         }
     }
@@ -96,7 +95,7 @@ class MainViewModel: NSObject {
                         self.delegate?.stopRefresh()
                     } else {
                         self.delegate?.stopRefresh()
-                        self.delegate?.showError(title: "Users details could not be loaded", message: "Error occured. Description: \(String(describing: errorMessage))")
+                        self.delegate?.showError(title: "User details could not be loaded", message: "Error occured. Description: \(String(describing: errorMessage))")
                     }
                 }
             }
