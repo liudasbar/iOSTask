@@ -10,6 +10,8 @@ import MessageUI
 
 class DetailsVC: UIViewController, MFMailComposeViewControllerDelegate, ImageActivity, UITableViewDelegate {
     
+    var coordinator: MainCoordinator!
+    
     var mail: Mail!
     
     var detailsViewModel: DetailsViewModel!
@@ -25,9 +27,7 @@ class DetailsVC: UIViewController, MFMailComposeViewControllerDelegate, ImageAct
     
     
     override func viewDidAppear(_ animated: Bool) {
-        UIView.animate(withDuration: 0.3) {
-            //self.infoView.alpha = 1
-        }
+        
     }
     
     override func viewDidLoad() {
@@ -40,7 +40,7 @@ class DetailsVC: UIViewController, MFMailComposeViewControllerDelegate, ImageAct
         delegatesInit()
         designInit()
         
-        detailsViewModel.getImage(userID: 1) //PADUOTI USER ID
+        fetchData()
     }
     
     
@@ -67,10 +67,13 @@ class DetailsVC: UIViewController, MFMailComposeViewControllerDelegate, ImageAct
         mail.delegate = self
     }
     
-    func selectedCell(row: Int) {
-        print(row)
+    /// Initial data fetch
+    func fetchData() {
+        detailsViewModel.getImage(userID: userID)
     }
     
+    
+    /// Assign data
     func askForImage() {
         detailsViewModel.bindImageData = {
             self.mainViewModel.bindUserData = {
@@ -83,6 +86,16 @@ class DetailsVC: UIViewController, MFMailComposeViewControllerDelegate, ImageAct
                 }
             }
         }
+    }
+    
+    /// Did select table view row
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        print(mainViewModel.postsData[indexPath.row].title)
+        
+        tableView.deselectRow(at: indexPath, animated: true)
+        
+        //Coordinator approach prepare for going to details screen
+        coordinator.goToDetails(selfVC: self, userID: mainViewModel.postsData[indexPath.row].userID)
     }
     
     /// Load image onto the imageView

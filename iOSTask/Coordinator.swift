@@ -16,13 +16,11 @@ protocol Coordinator {
 class MainCoordinator: Coordinator {
     func goToDetails(selfVC: UIViewController ,userID: Int) {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let vc = storyboard.instantiateViewController(withIdentifier: "DetailsVC") as! DetailsVC
-        
-        vc.userID = userID
-        vc.coordinator = self
-        print(userID)
-        print("YOOOO")
-        
-        selfVC.performSegue(withIdentifier: "detailsSegue", sender: nil)
+        if let detailsVC = storyboard.instantiateViewController(withIdentifier: "DetailsVC") as? DetailsVC {
+            detailsVC.userID = userID
+            detailsVC.coordinator = self
+            
+            selfVC.present(detailsVC, animated: true, completion: nil)
+        }
     }
 }

@@ -58,7 +58,7 @@ class MainVC: UIViewController, Activity, UITableViewDelegate {
         mainViewModel.getPosts(pullToRefresh: false)
     }
     
-    /// Fill table view with data
+    /// Assign data
     @objc func fillData() {
         mainViewModel.bindPostData = {
             self.mainViewModel.bindUserData = {
