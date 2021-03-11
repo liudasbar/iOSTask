@@ -29,7 +29,7 @@
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <inset key="separatorInset" minX="22" minY="0.0" maxX="22" maxY="0.0"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="postCell" rowHeight="140" id="2ii-ms-ZOy" customClass="PostCell" customModule="iOSTask" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="postCell" rowHeight="140" id="2ii-ms-ZOy" customClass="PostCell" customModule="iOSTask" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="24.5" width="414" height="140"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="2ii-ms-ZOy" id="SrO-1M-kA2">
@@ -119,7 +119,7 @@
                     <connections>
                         <outlet property="loadingIndicator" destination="uiF-Xm-JJw" id="qRQ-2P-tqm"/>
                         <outlet property="tableView" destination="Mhx-Eb-sYS" id="7G4-rr-jnT"/>
-                        <segue destination="uyB-cA-IpZ" kind="show" id="qM7-md-mcj"/>
+                        <segue destination="uyB-cA-IpZ" kind="show" identifier="detailsSegue" id="qM7-md-mcj"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Jgl-8Y-RFZ" sceneMemberID="firstResponder"/>

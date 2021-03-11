@@ -33,6 +33,7 @@
 		F4AC30B025F97C9800D73103 /* FetchImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4AC30AF25F97C9800D73103 /* FetchImage.swift */; };
 		F4AC30B525F987D100D73103 /* FetchUsersData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4AC30B425F987D100D73103 /* FetchUsersData.swift */; };
 		F4C567C625FA414A008CE5A0 /* DetailsTableController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4C567C525FA414A008CE5A0 /* DetailsTableController.swift */; };
+		F4C567C825FA5336008CE5A0 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4C567C725FA5336008CE5A0 /* Coordinator.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -87,6 +88,7 @@
 		F4AC30AF25F97C9800D73103 /* FetchImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchImage.swift; sourceTree = "<group>"; };
 		F4AC30B425F987D100D73103 /* FetchUsersData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchUsersData.swift; sourceTree = "<group>"; };
 		F4C567C525FA414A008CE5A0 /* DetailsTableController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsTableController.swift; sourceTree = "<group>"; };
+		F4C567C725FA5336008CE5A0 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -220,6 +222,7 @@
 				F42AD2FA25F9179A00D09BCC /* Main */,
 				F4AC30A425F9752800D73103 /* Details */,
 				F49F285525F913C30036D68D /* Main.storyboard */,
+				F4C567C725FA5336008CE5A0 /* Coordinator.swift */,
 				F4AC30A225F9659800D73103 /* CheckInternetConnection.swift */,
 				F49F285825F913C70036D68D /* Assets.xcassets */,
 				F49F285A25F913C70036D68D /* LaunchScreen.storyboard */,
@@ -468,6 +471,7 @@
 				F49F285025F913C30036D68D /* AppDelegate.swift in Sources */,
 				F42AD2FF25F917F400D09BCC /* Posts.swift in Sources */,
 				F49F285225F913C30036D68D /* SceneDelegate.swift in Sources */,
+				F4C567C825FA5336008CE5A0 /* Coordinator.swift in Sources */,
 				F42AD31925F9205B00D09BCC /* FetchPosts.swift in Sources */,
 				F4AC30AD25F97C3300D73103 /* DetailsViewModel.swift in Sources */,
 				F4AC30AB25F9756900D73103 /* DetailsVC.swift in Sources */,

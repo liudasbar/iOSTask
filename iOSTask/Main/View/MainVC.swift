@@ -9,6 +9,8 @@ import UIKit
 
 class MainVC: UIViewController, Activity, UITableViewDelegate {
     
+    var coordinator: MainCoordinator!
+    
     var mainViewModel: MainViewModel!
     var dataSource: MainTableViewDataSource?
     
@@ -23,6 +25,7 @@ class MainVC: UIViewController, Activity, UITableViewDelegate {
         super.viewDidLoad()
         
         mainViewModel = MainViewModel()
+        coordinator = MainCoordinator()
         
         delegatesInit()
         designInit()
@@ -40,6 +43,8 @@ class MainVC: UIViewController, Activity, UITableViewDelegate {
         mainViewModel.delegate = self
         
         fetchData()
+        
+       
     }
     
     /// Design init
@@ -68,10 +73,14 @@ class MainVC: UIViewController, Activity, UITableViewDelegate {
         }
     }
     
+    /// Did select table view row
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print("Aaa")
+        print(mainViewModel.postsData[indexPath.row].title)
         
         tableView.deselectRow(at: indexPath, animated: true)
+        
+        //Coordinator approach prepare for going to details screen
+        coordinator.goToDetails(selfVC: self, userID: mainViewModel.postsData[indexPath.row].userID)
     }
     
     /// Data started fetching - start refresh animations

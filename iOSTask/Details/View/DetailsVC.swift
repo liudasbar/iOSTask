@@ -9,8 +9,9 @@ import UIKit
 import MessageUI
 
 class DetailsVC: UIViewController, MFMailComposeViewControllerDelegate, ImageActivity, UITableViewDelegate {
-
-    let mail = Mail()
+    
+    var mail: Mail!
+    
     var detailsViewModel: DetailsViewModel!
     var mainViewModel: MainViewModel!
     
@@ -34,6 +35,7 @@ class DetailsVC: UIViewController, MFMailComposeViewControllerDelegate, ImageAct
         
         detailsViewModel = DetailsViewModel()
         mainViewModel = MainViewModel()
+        mail = Mail()
         
         delegatesInit()
         designInit()
