@@ -10,6 +10,9 @@ import MessageUI
 
 class DetailsVC: UIViewController, MFMailComposeViewControllerDelegate, ImageActivity {
 
+    let mail = Mail()
+    var detailsViewModel: DetailsViewModel!
+    
     @IBOutlet weak var infoView: UIView!
     
     @IBOutlet weak var nameLabel: UILabel!
@@ -19,6 +22,7 @@ class DetailsVC: UIViewController, MFMailComposeViewControllerDelegate, ImageAct
     //Email button
     @IBOutlet weak var emailButton: UIButton!
     @IBAction func emailButtonAction(_ sender: UIButton) {
+        mail.sendMail(sender.title(for: .normal)!)
     }
     
     @IBOutlet weak var locationButton: UIButton!
@@ -41,7 +45,12 @@ class DetailsVC: UIViewController, MFMailComposeViewControllerDelegate, ImageAct
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        detailsViewModel = DetailsViewModel()
+        
+        delegatesInit()
         designInit()
+        
+        detailsViewModel.getImage(userID: 1) //PADUOTI USER ID
     }
     
     
@@ -53,8 +62,13 @@ class DetailsVC: UIViewController, MFMailComposeViewControllerDelegate, ImageAct
         imageView.clipsToBounds = true
     }
     
+    /// Delegates init
+    func delegatesInit() {
+        mail.delegate = self
+    }
     
-    func passImage(imageData: Data) {
+    /// Load image onto the imageView
+    func loadImage(imageData: Data) {
         imageView.image = UIImage(data: imageData)
     }
     

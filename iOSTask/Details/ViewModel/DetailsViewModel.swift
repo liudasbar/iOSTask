@@ -9,11 +9,11 @@ import Foundation
 import UIKit
 
 protocol ImageActivity {
-    func passImage(imageData: Data)
+    func loadImage(imageData: Data)
     func showError(title: String, message: String)
 }
 
-class DetailsModelView: NSObject {
+class DetailsViewModel: NSObject {
     
     private var API: FetchImage!
     var delegate: ImageActivity?
@@ -25,15 +25,15 @@ class DetailsModelView: NSObject {
     }
     
     /// Get posts
-    func getImage() {
-        //PADUOTI ID CIA
-        self.API.getImage(userID: Int()) { (status, imageData, errorMessage) in
+    func getImage(userID: Int) {
+        
+        self.API.getImage(userID: userID) { (status, imageData, errorMessage) in
             
             //Check connection
             if NetworkReachability().isConnectedToNetwork() {
                 if status {
                     //If status is OK - assign API data to postsData
-                    self.delegate?.passImage(imageData: imageData!)
+                    self.delegate?.loadImage(imageData: imageData!)
                 } else {
                     self.delegate?.showError(title: "Image could not be loaded", message: "Error occured. Description: \(String(describing: errorMessage))")
                 }
