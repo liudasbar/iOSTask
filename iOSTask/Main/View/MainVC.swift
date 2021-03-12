@@ -39,9 +39,7 @@ class MainVC: UIViewController, Activity, UITableViewDelegate {
     /// Delegates init
     func delegatesInit() {
         tableView.delegate = self
-        
         mainViewModel.delegate = self
-        
         fetchData()
     }
     
@@ -73,8 +71,6 @@ class MainVC: UIViewController, Activity, UITableViewDelegate {
     
     /// Did select table view row
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print(mainViewModel.postsData[indexPath.row].title)
-        
         tableView.deselectRow(at: indexPath, animated: true)
         
         //Coordinator approach prepare for going to details screen
