@@ -52,7 +52,7 @@ class DetailsVC: UIViewController, MFMailComposeViewControllerDelegate, ImageAct
     func designInit() {
         navigationItem.title = "User details"
         let doneItem = UIBarButtonItem(barButtonSystemItem: .close, target: self, action: #selector(dismissView))
-        navigationItem.leftBarButtonItem = doneItem
+        navigationController!.navigationItem.leftBarButtonItem = doneItem
     }
     
     /// Dismiss current VC

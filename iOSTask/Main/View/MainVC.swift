@@ -30,6 +30,7 @@ class MainVC: UIViewController, Activity, UITableViewDelegate {
         delegatesInit()
         designInit()
         
+        fetchData()
         fillData()
         
         pullToRefresh()
@@ -40,13 +41,15 @@ class MainVC: UIViewController, Activity, UITableViewDelegate {
     func delegatesInit() {
         tableView.delegate = self
         mainViewModel.delegate = self
-        fetchData()
     }
     
     /// Design init
     func designInit() {
         loadingIndicator.alpha = 1
         tableView.decelerationRate = .normal
+        
+        navigationItem.title = "Posts"
+        navigationController?.navigationBar.prefersLargeTitles = true
     }
     
     /// Data fetch

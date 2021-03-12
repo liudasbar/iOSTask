@@ -24,10 +24,8 @@ class MainCoordinator: Coordinator {
             detailsVC.userID = userID
             detailsVC.coordinator = self
             
-            let navigationController = UINavigationController(rootViewController: detailsVC)
-            navigationController.modalPresentationStyle = UIModalPresentationStyle.currentContext
-            
-            selfVC.present(navigationController, animated: true, completion: nil)
+            selfVC.performSegue(withIdentifier: "detailsSegue", sender: nil)
+
         }
     }
     
