@@ -49,8 +49,8 @@ class MainVC: UIViewController, Activity, UITableViewDelegate {
         tableView.decelerationRate = .normal
     }
     
-    /// Initial data fetch
-    func fetchData() {
+    /// Data fetch
+    @objc func fetchData() {
         mainViewModel.getPosts(pullToRefresh: false)
     }
     
@@ -102,7 +102,7 @@ class MainVC: UIViewController, Activity, UITableViewDelegate {
         }))
         
         alert.addAction(UIAlertAction(title: "Retry", style: UIAlertAction.Style.default, handler: { action in
-            self.refresh()
+            self.fetchData()
         }))
         
         DispatchQueue.main.async {
@@ -114,12 +114,7 @@ class MainVC: UIViewController, Activity, UITableViewDelegate {
     func pullToRefresh() {
         refreshControl.attributedTitle = NSAttributedString(string: "Refresh")
         refreshControl.backgroundColor = UIColor.systemBackground
-        refreshControl.addTarget(self, action: #selector(self.refresh), for: .valueChanged)
+        refreshControl.addTarget(self, action: #selector(self.fetchData), for: .valueChanged)
         tableView.addSubview(refreshControl)
-    }
-    
-    /// Refresh action
-    @objc func refresh() {
-        mainViewModel.getPosts(pullToRefresh: true)
     }
 }

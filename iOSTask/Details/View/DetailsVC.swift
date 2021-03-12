@@ -72,7 +72,7 @@ class DetailsVC: UIViewController, MFMailComposeViewControllerDelegate, ImageAct
         mail.delegate = self
     }
     
-    /// Initial data fetch
+    /// Data fetch
     func fetchData() {
         detailsViewModel.getImage(userID: userID)
     }
@@ -151,12 +151,7 @@ class DetailsVC: UIViewController, MFMailComposeViewControllerDelegate, ImageAct
     func pullToRefresh() {
         refreshControl.attributedTitle = NSAttributedString(string: "Refresh")
         refreshControl.backgroundColor = UIColor.systemBackground
-        refreshControl.addTarget(self, action: #selector(self.refresh), for: .valueChanged)
+        refreshControl.addTarget(self, action: #selector(self.fetchData), for: .valueChanged)
         tableView.addSubview(refreshControl)
-    }
-    
-    /// Refresh action
-    @objc func refresh() {
-        mainViewModel.getPosts(pullToRefresh: true)
     }
 }
