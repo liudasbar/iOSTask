@@ -18,11 +18,18 @@ class MainCoordinator: Coordinator {
     func goToDetails(selfVC: UIViewController ,userID: Int) {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         
+        
+        
         if let detailsVC = storyboard.instantiateViewController(withIdentifier: "DetailsVC") as? DetailsVC {
             detailsVC.userID = userID
             detailsVC.coordinator = self
             
-            selfVC.present(detailsVC, animated: true, completion: nil)
+            let navigationController = UINavigationController(rootViewController: detailsVC)
+            navigationController.modalPresentationStyle = UIModalPresentationStyle.currentContext
+            
+            selfVC.present(navigationController, animated: true, completion: nil)
         }
     }
+    
+    
 }

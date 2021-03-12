@@ -50,14 +50,9 @@ class DetailsVC: UIViewController, MFMailComposeViewControllerDelegate, ImageAct
     
     /// Design init
     func designInit() {
-        let navBar = UINavigationBar(frame: CGRect(x: 0, y: 0, width: view.frame.size.width, height: 50))
-        view.addSubview(navBar)
-
-        let navItem = UINavigationItem(title: "User details")
-        let doneItem = UIBarButtonItem(barButtonSystemItem: .close, target: nil, action: #selector(dismissView))
-        navItem.leftBarButtonItem = doneItem
-
-        navBar.setItems([navItem], animated: false)
+        navigationItem.title = "User details"
+        let doneItem = UIBarButtonItem(barButtonSystemItem: .close, target: self, action: #selector(dismissView))
+        navigationItem.leftBarButtonItem = doneItem
     }
     
     /// Dismiss current VC
@@ -73,7 +68,7 @@ class DetailsVC: UIViewController, MFMailComposeViewControllerDelegate, ImageAct
     }
     
     /// Data fetch
-    func fetchData() {
+    @objc func fetchData() {
         detailsViewModel.getImage(userID: userID)
     }
     

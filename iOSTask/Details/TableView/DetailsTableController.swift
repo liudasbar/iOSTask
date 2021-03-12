@@ -42,8 +42,8 @@ class DetailsTableViewDataSource: NSObject, UITableViewDataSource {
             
             let post = usersDetails![indexPath.row]
             
-            cell.detailsIconImageView.image = UIImage(systemName: "")
-            cell.detailsInfoLabel.text = ""
+            cell.detailsIconImageView.image = UIImage(systemName: "location.fill")
+            cell.detailsInfoLabel.text = "aa"
             
             return cell
         }
