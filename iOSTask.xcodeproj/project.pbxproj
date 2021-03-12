@@ -3,11 +3,12 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
 		C97796743287594C0AF51CE9 /* Pods_iOSTask.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D828E2C2A9CA426C32C6918A /* Pods_iOSTask.framework */; };
+		F400C4DB25FBD872007CA078 /* TableViewPostCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F400C4DA25FBD872007CA078 /* TableViewPostCell.swift */; };
 		F42AD2FF25F917F400D09BCC /* Posts.swift in Sources */ = {isa = PBXBuildFile; fileRef = F42AD2FE25F917F400D09BCC /* Posts.swift */; };
 		F42AD30A25F9197500D09BCC /* MainVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F42AD30925F9197500D09BCC /* MainVC.swift */; };
 		F42AD30F25F91BDC00D09BCC /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F42AD30E25F91BDC00D09BCC /* MainViewModel.swift */; };
@@ -57,6 +58,7 @@
 		3AD504B701ECA4A7F78EA2EE /* Pods-iOSTask.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iOSTask.debug.xcconfig"; path = "Target Support Files/Pods-iOSTask/Pods-iOSTask.debug.xcconfig"; sourceTree = "<group>"; };
 		98D7B67D7DE4DCA501993F0D /* Pods-iOSTask.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iOSTask.release.xcconfig"; path = "Target Support Files/Pods-iOSTask/Pods-iOSTask.release.xcconfig"; sourceTree = "<group>"; };
 		D828E2C2A9CA426C32C6918A /* Pods_iOSTask.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_iOSTask.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		F400C4DA25FBD872007CA078 /* TableViewPostCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewPostCell.swift; sourceTree = "<group>"; };
 		F42AD2FE25F917F400D09BCC /* Posts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Posts.swift; sourceTree = "<group>"; };
 		F42AD30925F9197500D09BCC /* MainVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainVC.swift; sourceTree = "<group>"; };
 		F42AD30E25F91BDC00D09BCC /* MainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
@@ -186,6 +188,7 @@
 				F4C567C525FA414A008CE5A0 /* DetailsTableController.swift */,
 				F4589EE625FA3ECE00059CE5 /* TableViewFirstCell.swift */,
 				F4589EE825FA3EDB00059CE5 /* TableViewDataCell.swift */,
+				F400C4DA25FBD872007CA078 /* TableViewPostCell.swift */,
 			);
 			path = TableView;
 			sourceTree = "<group>";
@@ -485,6 +488,7 @@
 				F4C567C625FA414A008CE5A0 /* DetailsTableController.swift in Sources */,
 				F49F285425F913C30036D68D /* ViewController.swift in Sources */,
 				F42AD30A25F9197500D09BCC /* MainVC.swift in Sources */,
+				F400C4DB25FBD872007CA078 /* TableViewPostCell.swift in Sources */,
 				F4AC30A925F9755500D73103 /* SendMail.swift in Sources */,
 				F49F285025F913C30036D68D /* AppDelegate.swift in Sources */,
 				F42AD2FF25F917F400D09BCC /* Posts.swift in Sources */,

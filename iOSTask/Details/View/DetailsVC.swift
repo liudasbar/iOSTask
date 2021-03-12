@@ -20,12 +20,17 @@ class DetailsVC: UIViewController, MFMailComposeViewControllerDelegate, ImageAct
     var dataSource: DetailsTableViewDataSource?
     
     var userID = Int()
+    var post = Post(userID: 0, id: 0, title: "", body: "")
     
     @IBOutlet weak var tableView: UITableView!
     
     var refreshControl = UIRefreshControl()
     
     var imageViewData = Data()
+    
+    @IBAction func dismissButtonAction(_ sender: UIButton) {
+        dismiss(animated: true, completion: nil)
+    }
     
     
     override func viewDidLoad() {
@@ -36,7 +41,6 @@ class DetailsVC: UIViewController, MFMailComposeViewControllerDelegate, ImageAct
         mail = Mail()
         
         delegatesInit()
-        designInit()
         
         fetchData()
         
@@ -46,17 +50,6 @@ class DetailsVC: UIViewController, MFMailComposeViewControllerDelegate, ImageAct
     }
     
     
-    /// Design init
-    func designInit() {
-        navigationItem.title = "User details"
-        let doneItem = UIBarButtonItem(barButtonSystemItem: .close, target: self, action: #selector(dismissView))
-        navigationController!.navigationItem.leftBarButtonItem = doneItem
-    }
-    
-    /// Dismiss current VC
-    @objc func dismissView() {
-        dismiss(animated: true, completion: nil)
-    }
     
     /// Delegates init
     func delegatesInit() {
@@ -74,13 +67,13 @@ class DetailsVC: UIViewController, MFMailComposeViewControllerDelegate, ImageAct
     
     /// Detect data changes and set data source + reload data
     func askForImage() {
-        print(mainViewModel.usersData.value)
         observe(detailsViewModel.imageData) { imageDataChange in
             DispatchQueue.main.async {
                 print("3")
-                self.dataSource = DetailsTableViewDataSource(withData: self.mainViewModel.usersData.value, imageData: imageDataChange.newValue)
+                self.dataSource = DetailsTableViewDataSource(withData: self.mainViewModel.usersData.value, imageData: imageDataChange.newValue, post: self.post)
                 self.tableView.dataSource = self.dataSource
-                print(self.mainViewModel.usersData.value)
+                
+                print(self.userID)
                 
                 self.tableView.reloadData()
             }
@@ -90,12 +83,31 @@ class DetailsVC: UIViewController, MFMailComposeViewControllerDelegate, ImageAct
     
     /// Did select table view row
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print(mainViewModel.postsData.value[indexPath.row].title)
-        
         tableView.deselectRow(at: indexPath, animated: true)
         
-        //Coordinator approach prepare for going to details screen
-        coordinator.goToDetails(selfVC: self, userID: mainViewModel.postsData.value[indexPath.row].userID)
+        switch indexPath.row {
+        case 1:
+            print("EMAIL")
+        case 2:
+            print("ADDRESS")
+        case 3:
+            print("PHONE NUMBER")
+        case 4:
+            print("COMPANY")
+        default:
+            print("ERROR ON SELECTION")
+        }
+    }
+    
+    /// Table view cells height
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        if indexPath.row == 0 {
+            return 140
+        } else if indexPath.row == 5 {
+            return 300
+        } else {
+            return UITableView.automaticDimension
+        }
     }
     
     /// Load image onto the imageView

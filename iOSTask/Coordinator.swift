@@ -10,22 +10,20 @@ import UIKit
 
 /// Coordinator for all coordinators
 protocol Coordinator {
-    func goToDetails(selfVC: UIViewController,userID: Int)
+    func goToDetails(selfVC: UIViewController, userID: Int, post: Post)
 }
 
 /// Coordinator for navigation between main and details VC
 class MainCoordinator: Coordinator {
-    func goToDetails(selfVC: UIViewController ,userID: Int) {
+    func goToDetails(selfVC: UIViewController, userID: Int, post: Post) {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        
-        
         
         if let detailsVC = storyboard.instantiateViewController(withIdentifier: "DetailsVC") as? DetailsVC {
             detailsVC.userID = userID
             detailsVC.coordinator = self
+            detailsVC.post = post
             
-            selfVC.performSegue(withIdentifier: "detailsSegue", sender: nil)
-
+            selfVC.showDetailViewController(detailsVC, sender: nil)
         }
     }
     

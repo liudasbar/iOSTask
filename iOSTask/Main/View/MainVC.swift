@@ -76,7 +76,7 @@ class MainVC: UIViewController, Activity, UITableViewDelegate {
         tableView.deselectRow(at: indexPath, animated: true)
         
         //Coordinator approach prepare for going to details screen
-        coordinator.goToDetails(selfVC: self, userID: mainViewModel.postsData.value[indexPath.row].userID)
+        coordinator.goToDetails(selfVC: self, userID: mainViewModel.postsData.value[indexPath.row].userID, post: mainViewModel.postsData.value[indexPath.row])
     }
     
     /// Data started fetching - start refresh animations

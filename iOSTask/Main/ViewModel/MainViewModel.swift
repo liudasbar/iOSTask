@@ -34,11 +34,9 @@ class MainViewModel: NSObject {
     /// Get posts
     func getPosts(pullToRefresh: Bool) {
         //Fetch posts data
-        //Network reachable
-        
         self.postsAPI.getPosts { (status, data, errorMessage) in
             
-            if !pullToRefresh {
+            if pullToRefresh {
                 self.delegate?.startRefresh()
             }
             
