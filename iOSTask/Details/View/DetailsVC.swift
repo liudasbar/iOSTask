@@ -23,6 +23,8 @@ class DetailsVC: UIViewController, MFMailComposeViewControllerDelegate, ImageAct
     
     @IBOutlet weak var tableView: UITableView!
     
+    var refreshControl = UIRefreshControl()
+    
     var imageViewData = Data()
     
     
@@ -41,6 +43,8 @@ class DetailsVC: UIViewController, MFMailComposeViewControllerDelegate, ImageAct
         designInit()
         
         fetchData()
+        
+        pullToRefresh()
     }
     
     
@@ -141,5 +145,18 @@ class DetailsVC: UIViewController, MFMailComposeViewControllerDelegate, ImageAct
             
             self.present(alert, animated: true, completion: nil)
         }
+    }
+    
+    /// Pull to Refresh
+    func pullToRefresh() {
+        refreshControl.attributedTitle = NSAttributedString(string: "Refresh")
+        refreshControl.backgroundColor = UIColor.systemBackground
+        refreshControl.addTarget(self, action: #selector(self.refresh), for: .valueChanged)
+        tableView.addSubview(refreshControl)
+    }
+    
+    /// Refresh action
+    @objc func refresh() {
+        mainViewModel.getPosts(pullToRefresh: true)
     }
 }
