@@ -6,5 +6,6 @@ target 'iOSTask' do
 
 #pod 'RxSwift'
 #pod 'RxAlamofire'
+pod 'Hanson'
 
 end

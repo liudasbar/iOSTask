@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import Hanson
 
 /// Activity indicator protocol
 protocol Activity {
@@ -20,21 +21,8 @@ class MainViewModel: NSObject {
     private var userDetailsAPI: FetchUserData!
     var delegate: Activity?
     
-    private(set) var postsData: Posts! {
-        didSet {
-            //Notifies the view about posts data changes
-            self.bindPostData()
-        }
-    }
-    
-    private(set) var usersData: UsersDetails! = [] {
-        didSet {
-            self.bindUserData()
-        }
-    }
-    
-    var bindPostData: (() -> ()) = {}
-    var bindUserData: (() -> ()) = {}
+    var postsData = Observable(Posts())
+    var usersData = Observable(UsersDetails())
     
     override init() {
         super.init()
@@ -47,6 +35,7 @@ class MainViewModel: NSObject {
     func getPosts(pullToRefresh: Bool) {
         //Fetch posts data
         //Network reachable
+        
         self.postsAPI.getPosts { (status, data, errorMessage) in
             
             if !pullToRefresh {
@@ -57,7 +46,7 @@ class MainViewModel: NSObject {
             if NetworkReachability().isConnectedToNetwork() {
                 if status {
                     //If status is OK - assign API data to postsData
-                    self.postsData = data
+                    self.postsData.value = data!
                     
                     self.getUsersDetails()
                 } else {
@@ -77,7 +66,7 @@ class MainViewModel: NSObject {
         //Array of all users IDs
         var userIDs: [Int] = []
         
-        for post in postsData {
+        for post in postsData.value {
             //Append user ID only if it is not present in the array
             if !userIDs.contains(post.userID) {
                 userIDs.append(post.userID)
@@ -89,7 +78,7 @@ class MainViewModel: NSObject {
                     if status {
                         //If status is OK - assign API data to usersData
                         if data != nil {
-                            self.usersData.append(data!)
+                            self.usersData.value.append(data!)
                         }
                         
                         self.delegate?.stopRefresh()

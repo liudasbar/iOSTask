@@ -6,7 +6,7 @@
 //
 
 import Foundation
-import UIKit
+import Hanson
 
 protocol ImageActivity {
     func loadImage(imageData: Data)
@@ -18,13 +18,7 @@ class DetailsViewModel: NSObject {
     private var API: FetchImage!
     var delegate: ImageActivity?
     
-    private(set) var imageData: Data! {
-        didSet {
-            self.bindImageData()
-        }
-    }
-    
-    var bindImageData: (() -> ()) = {}
+    var imageData = Observable(Data())
     
     override init() {
         super.init()
@@ -41,6 +35,7 @@ class DetailsViewModel: NSObject {
             if NetworkReachability().isConnectedToNetwork() {
                 if status {
                     //If status is OK - assign API data to postsData
+                    self.imageData.value = imageData!
                     self.delegate?.loadImage(imageData: imageData!)
                 } else {
                     self.delegate?.showError(title: "Image could not be loaded", message: "Error occured. Description: \(String(describing: errorMessage))")

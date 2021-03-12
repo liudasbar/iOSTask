@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Hanson
 
 class MainVC: UIViewController, Activity, UITableViewDelegate {
     
@@ -20,7 +21,6 @@ class MainVC: UIViewController, Activity, UITableViewDelegate {
     
     @IBOutlet weak var loadingIndicator: UIActivityIndicatorView!
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -31,11 +31,10 @@ class MainVC: UIViewController, Activity, UITableViewDelegate {
         designInit()
         
         fetchData()
-        fillData()
+        detectDataChanges()
         
         pullToRefresh()
     }
-    
     
     /// Delegates init
     func delegatesInit() {
@@ -57,13 +56,13 @@ class MainVC: UIViewController, Activity, UITableViewDelegate {
         mainViewModel.getPosts(pullToRefresh: false)
     }
     
-    /// Assign data
-    @objc func fillData() {
-        mainViewModel.bindPostData = {
-            self.mainViewModel.bindUserData = {
+    /// Detect data changes and set data source + reload data
+    @objc func detectDataChanges() {
+        observe(mainViewModel.postsData) { postsChange in
+            self.observe(self.mainViewModel.usersData) { usersDataChange in
                 DispatchQueue.main.async {
                     
-                    self.dataSource = MainTableViewDataSource(withData: self.mainViewModel.postsData, usersDetails: self.mainViewModel.usersData)
+                    self.dataSource = MainTableViewDataSource(withData: postsChange.newValue, usersDetails: usersDataChange.newValue)
                     self.tableView.dataSource = self.dataSource
                     
                     self.tableView.reloadData()
@@ -77,7 +76,7 @@ class MainVC: UIViewController, Activity, UITableViewDelegate {
         tableView.deselectRow(at: indexPath, animated: true)
         
         //Coordinator approach prepare for going to details screen
-        coordinator.goToDetails(selfVC: self, userID: mainViewModel.postsData[indexPath.row].userID)
+        coordinator.goToDetails(selfVC: self, userID: mainViewModel.postsData.value[indexPath.row].userID)
     }
     
     /// Data started fetching - start refresh animations
@@ -118,6 +117,6 @@ class MainVC: UIViewController, Activity, UITableViewDelegate {
         refreshControl.attributedTitle = NSAttributedString(string: "Refresh")
         refreshControl.backgroundColor = UIColor.systemBackground
         refreshControl.addTarget(self, action: #selector(self.fetchData), for: .valueChanged)
-        tableView.addSubview(refreshControl)
+        tableView.refreshControl = refreshControl
     }
 }

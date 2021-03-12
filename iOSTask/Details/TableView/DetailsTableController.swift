@@ -16,7 +16,7 @@ class DetailsTableViewDataSource: NSObject, UITableViewDataSource {
     var userID = Int()
     
     init(withData usersDetails: UsersDetails, imageData: Data) {
-        self.usersDetails = usersDetails
+        self.usersDetails.value = usersDetails
         self.imageData = imageData
     }
     
@@ -29,7 +29,7 @@ class DetailsTableViewDataSource: NSObject, UITableViewDataSource {
             //Details first cell
             let cell = tableView.dequeueReusableCell(withIdentifier: "detailsFirstCell", for: indexPath) as! DetailsFirstCell
             
-            let userDetails = usersDetails![indexPath.row]
+            let userDetails = usersDetails.value[indexPath.row]
             
             cell.imageView?.image = UIImage(data: imageData)
             cell.nameLabel.text = userDetails.name
@@ -40,7 +40,7 @@ class DetailsTableViewDataSource: NSObject, UITableViewDataSource {
             //Details info cell
             let cell = tableView.dequeueReusableCell(withIdentifier: "detailsDataCell", for: indexPath) as! DetailsDataCell
             
-            let post = usersDetails![indexPath.row]
+            let post = usersDetails.value[indexPath.row]
             
             cell.detailsIconImageView.image = UIImage(systemName: "location.fill")
             cell.detailsInfoLabel.text = "aa"

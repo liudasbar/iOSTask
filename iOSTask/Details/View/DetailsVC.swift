@@ -28,10 +28,6 @@ class DetailsVC: UIViewController, MFMailComposeViewControllerDelegate, ImageAct
     var imageViewData = Data()
     
     
-    override func viewDidAppear(_ animated: Bool) {
-        
-    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -43,6 +39,8 @@ class DetailsVC: UIViewController, MFMailComposeViewControllerDelegate, ImageAct
         designInit()
         
         fetchData()
+        
+        askForImage()
         
         pullToRefresh()
     }
@@ -69,33 +67,35 @@ class DetailsVC: UIViewController, MFMailComposeViewControllerDelegate, ImageAct
     
     /// Data fetch
     @objc func fetchData() {
+        mainViewModel.getPosts(pullToRefresh: false)
         detailsViewModel.getImage(userID: userID)
     }
     
     
-    /// Assign data
+    /// Detect data changes and set data source + reload data
     func askForImage() {
-        detailsViewModel.bindImageData = {
-            self.mainViewModel.bindUserData = {
-                DispatchQueue.main.async {
-                    
-                    self.dataSource = DetailsTableViewDataSource(withData: self.mainViewModel.usersData, imageData: self.detailsViewModel.imageData)
-                    self.tableView.dataSource = self.dataSource
-                    
-                    self.tableView.reloadData()
-                }
+        print(mainViewModel.usersData.value)
+        observe(detailsViewModel.imageData) { imageDataChange in
+            DispatchQueue.main.async {
+                print("3")
+                self.dataSource = DetailsTableViewDataSource(withData: self.mainViewModel.usersData.value, imageData: imageDataChange.newValue)
+                self.tableView.dataSource = self.dataSource
+                print(self.mainViewModel.usersData.value)
+                
+                self.tableView.reloadData()
             }
+            
         }
     }
     
     /// Did select table view row
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print(mainViewModel.postsData[indexPath.row].title)
+        print(mainViewModel.postsData.value[indexPath.row].title)
         
         tableView.deselectRow(at: indexPath, animated: true)
         
         //Coordinator approach prepare for going to details screen
-        coordinator.goToDetails(selfVC: self, userID: mainViewModel.postsData[indexPath.row].userID)
+        coordinator.goToDetails(selfVC: self, userID: mainViewModel.postsData.value[indexPath.row].userID)
     }
     
     /// Load image onto the imageView
@@ -147,6 +147,6 @@ class DetailsVC: UIViewController, MFMailComposeViewControllerDelegate, ImageAct
         refreshControl.attributedTitle = NSAttributedString(string: "Refresh")
         refreshControl.backgroundColor = UIColor.systemBackground
         refreshControl.addTarget(self, action: #selector(self.fetchData), for: .valueChanged)
-        tableView.addSubview(refreshControl)
+        tableView.refreshControl = refreshControl
     }
 }
