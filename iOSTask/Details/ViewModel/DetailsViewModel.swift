@@ -20,6 +20,14 @@ class DetailsViewModel: NSObject {
     
     var imageData = Observable(Data())
     
+//    private(set) var imageData: Data! {
+//        didSet {
+//            self.bindImageData()
+//        }
+//    }
+//
+//    var bindImageData: (() -> ()) = {}
+    
     override init() {
         super.init()
         
