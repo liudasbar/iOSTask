@@ -43,8 +43,6 @@ class MainVC: UIViewController, Activity, UITableViewDelegate {
         mainViewModel.delegate = self
         
         fetchData()
-        
-       
     }
     
     /// Design init

@@ -56,6 +56,7 @@ class DetailsVC: UIViewController, MFMailComposeViewControllerDelegate, ImageAct
         navBar.setItems([navItem], animated: false)
     }
     
+    /// Dismiss current VC
     @objc func dismissView() {
         dismiss(animated: true, completion: nil)
     }

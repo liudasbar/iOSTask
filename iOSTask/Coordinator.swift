@@ -8,14 +8,16 @@
 import Foundation
 import UIKit
 
+/// Coordinator for all coordinators
 protocol Coordinator {
     func goToDetails(selfVC: UIViewController,userID: Int)
 }
 
-/// Coordinator for navigation
+/// Coordinator for navigation between main and details VC
 class MainCoordinator: Coordinator {
     func goToDetails(selfVC: UIViewController ,userID: Int) {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        
         if let detailsVC = storyboard.instantiateViewController(withIdentifier: "DetailsVC") as? DetailsVC {
             detailsVC.userID = userID
             detailsVC.coordinator = self
