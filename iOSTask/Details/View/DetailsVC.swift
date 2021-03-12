@@ -70,10 +70,8 @@ class DetailsVC: UIViewController, MFMailComposeViewControllerDelegate, ImageAct
         observe(detailsViewModel.imageData) { imageDataChange in
             DispatchQueue.main.async {
                 print("3")
-                self.dataSource = DetailsTableViewDataSource(withData: self.mainViewModel.usersData.value, imageData: imageDataChange.newValue, post: self.post)
+                self.dataSource = DetailsTableViewDataSource(withData: self.mainViewModel.usersData.value, imageData: imageDataChange.newValue, userID: self.userID, post: self.post)
                 self.tableView.dataSource = self.dataSource
-                
-                print(self.userID)
                 
                 self.tableView.reloadData()
             }
@@ -85,18 +83,48 @@ class DetailsVC: UIViewController, MFMailComposeViewControllerDelegate, ImageAct
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         
-        switch indexPath.row {
-        case 1:
-            print("EMAIL")
-        case 2:
-            print("ADDRESS")
-        case 3:
-            print("PHONE NUMBER")
-        case 4:
-            print("COMPANY")
-        default:
-            print("ERROR ON SELECTION")
+        let userDetails = mainViewModel.usersData.value
+        var name = ""
+        
+        if let cell = self.tableView.cellForRow(at: indexPath) {
+            for selectedCell in tableView.visibleCells {
+                if selectedCell == cell {
+                    let cell: DetailsDataCell = cell as! DetailsDataCell
+                    
+                    switch indexPath.row {
+                    case 1:
+                        print("EMAIL")
+                        mail.sendMail(cell.detailsInfoLabel.text!)
+                    case 2:
+                        print("ADDRESS")
+                    case 3:
+                        print("PHONE NUMBER")
+                    case 4:
+                        print("COMPANY")
+                    default:
+                        print("ERROR ON SELECTION")
+                    }
+                }
+            }
         }
+        
+//        for user in userDetails {
+//            if userID == user.id {
+//                switch indexPath.row {
+//                case 1:
+//                    print("EMAIL")
+//                    mail.sendMail(mainViewModel.usersData.value[indexPath.row].email)
+//                case 2:
+//                    print("ADDRESS")
+//                case 3:
+//                    print("PHONE NUMBER")
+//                case 4:
+//                    print("COMPANY")
+//                default:
+//                    print("ERROR ON SELECTION")
+//                }
+//            }
+//        }
     }
     
     /// Table view cells height
@@ -104,9 +132,9 @@ class DetailsVC: UIViewController, MFMailComposeViewControllerDelegate, ImageAct
         if indexPath.row == 0 {
             return 140
         } else if indexPath.row == 5 {
-            return 300
-        } else {
             return UITableView.automaticDimension
+        } else {
+            return 60
         }
     }
     

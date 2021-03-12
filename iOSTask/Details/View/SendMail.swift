@@ -24,7 +24,7 @@ class Mail {
             delegate?.present(mail, animated: true)
             
         } else {
-            let alert = UIAlertController(title: "Email can not be sent", message: "Mail application is probably not set up.", preferredStyle: .alert)
+            let alert = UIAlertController(title: "Email could not be sent", message: "Mail application is probably not set up.", preferredStyle: .alert)
             delegate?.present(alert, animated: true, completion: nil)
             
             alert.addAction(UIAlertAction(title: "Retry", style: UIAlertAction.Style.default, handler: { action in }))
@@ -33,7 +33,7 @@ class Mail {
     
     /// Mail and all other related child view controllers dismissal when finished
     func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {
-        //delegate?.dismiss(animated: true, completion: nil)
+        delegate?.presentingViewController!.dismiss(animated: true, completion: nil)
         controller.dismiss(animated: true)
     }
 }
