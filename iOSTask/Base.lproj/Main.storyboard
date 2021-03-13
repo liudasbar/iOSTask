@@ -16,20 +16,20 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="140" estimatedRowHeight="140" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Mhx-Eb-sYS">
-                                <rect key="frame" x="0.0" y="88" width="414" height="774"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="140" estimatedRowHeight="140" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Mhx-Eb-sYS">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="862"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <inset key="separatorInset" minX="22" minY="0.0" maxX="22" maxY="0.0"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="postCell" rowHeight="140" id="2ii-ms-ZOy" customClass="PostCell" customModule="iOSTask" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="414" height="140"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="postCell" rowHeight="150" id="2ii-ms-ZOy" customClass="PostCell" customModule="iOSTask" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="414" height="150"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="2ii-ms-ZOy" id="SrO-1M-kA2">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="140"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="150"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fm0-YH-5Su">
-                                                    <rect key="frame" x="20" y="53" width="374" height="35"/>
+                                                    <rect key="frame" x="20" y="56" width="374" height="35"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="35" id="LAH-pR-jD9"/>
                                                     </constraints>
@@ -38,14 +38,14 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Text" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="muz-td-FxV">
-                                                    <rect key="frame" x="20" y="93" width="374" height="25"/>
+                                                    <rect key="frame" x="20" y="96" width="374" height="25"/>
                                                     <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="18"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Text" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Q1E-Ae-IP4">
-                                                    <rect key="frame" x="20" y="16" width="374" height="22"/>
-                                                    <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="16"/>
+                                                    <rect key="frame" x="20" y="16" width="374" height="25"/>
+                                                    <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="18"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
@@ -82,10 +82,10 @@
                             <constraint firstItem="7Ld-rL-KhS" firstAttribute="trailing" secondItem="Mhx-Eb-sYS" secondAttribute="trailing" id="gS8-GP-yCA"/>
                             <constraint firstItem="uiF-Xm-JJw" firstAttribute="centerX" secondItem="kHu-He-3eZ" secondAttribute="centerX" id="prx-FN-zqu"/>
                             <constraint firstItem="Mhx-Eb-sYS" firstAttribute="bottom" secondItem="7Ld-rL-KhS" secondAttribute="bottom" id="sAN-nK-Dio"/>
-                            <constraint firstItem="Mhx-Eb-sYS" firstAttribute="top" secondItem="7Ld-rL-KhS" secondAttribute="top" id="u1U-lw-ueo"/>
+                            <constraint firstItem="Mhx-Eb-sYS" firstAttribute="top" secondItem="kHu-He-3eZ" secondAttribute="top" id="u1U-lw-ueo"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="m4M-fo-K61"/>
+                    <navigationItem key="navigationItem" largeTitleDisplayMode="always" id="m4M-fo-K61"/>
                     <connections>
                         <outlet property="loadingIndicator" destination="uiF-Xm-JJw" id="qRQ-2P-tqm"/>
                         <outlet property="tableView" destination="Mhx-Eb-sYS" id="7G4-rr-jnT"/>

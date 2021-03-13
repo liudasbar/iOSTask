@@ -44,7 +44,7 @@ class DetailsVC: UIViewController, MFMailComposeViewControllerDelegate, ImageAct
         
         fetchData()
         
-        askForImage()
+        dataObservers()
         
         pullToRefresh()
     }
@@ -66,7 +66,23 @@ class DetailsVC: UIViewController, MFMailComposeViewControllerDelegate, ImageAct
     
     
     /// Detect data changes and set data source + reload data
-    func askForImage() {
+    func dataObservers() {
+        //Observe new posts data
+        observe(mainViewModel.postsData) { postsDataChange in
+            DispatchQueue.main.async {
+                let newPostData = postsDataChange.newValue
+                
+                for post in newPostData {
+                    if post.id == self.post.id {
+                        self.post = post
+                        
+                        self.tableView.reloadData()
+                    }
+                }
+            }
+            
+        }
+        
         observe(detailsViewModel.imageData) { imageDataChange in
             DispatchQueue.main.async {
                 self.dataSource = DetailsTableViewDataSource(withData: self.mainViewModel.usersData.value, imageData: imageDataChange.newValue, userID: self.userID, post: self.post)
@@ -126,7 +142,6 @@ class DetailsVC: UIViewController, MFMailComposeViewControllerDelegate, ImageAct
     func stopRefresh() {
         DispatchQueue.main.async {
             self.refreshControl.endRefreshing()
-            print("Y")
         }
     }
     

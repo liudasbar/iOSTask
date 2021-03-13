@@ -31,7 +31,7 @@ class MainVC: UIViewController, Activity, UITableViewDelegate {
         designInit()
         
         fetchData()
-        detectDataChanges()
+        dataObservers()
         
         pullToRefresh()
     }
@@ -60,7 +60,7 @@ class MainVC: UIViewController, Activity, UITableViewDelegate {
     }
     
     /// Detect data changes and set data source + reload data
-    @objc func detectDataChanges() {
+    @objc func dataObservers() {
         observe(mainViewModel.postsData) { postsChange in
             self.observe(self.mainViewModel.usersData) { usersDataChange in
                 DispatchQueue.main.async {
