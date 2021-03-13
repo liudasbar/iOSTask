@@ -11,6 +11,7 @@ import Hanson
 protocol ImageActivity {
     func loadImage(imageData: Data)
     func showError(title: String, message: String)
+    func stopRefresh()
 }
 
 class DetailsViewModel: NSObject {
@@ -45,6 +46,7 @@ class DetailsViewModel: NSObject {
                     //If status is OK - assign API data to postsData
                     self.imageData.value = imageData!
                     self.delegate?.loadImage(imageData: imageData!)
+                    self.delegate?.stopRefresh()
                 } else {
                     self.delegate?.showError(title: "Image could not be loaded", message: "Error occured. Description: \(String(describing: errorMessage))")
                 }

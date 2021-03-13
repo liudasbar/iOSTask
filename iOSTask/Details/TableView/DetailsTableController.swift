@@ -68,10 +68,12 @@ class DetailsTableViewDataSource: NSObject, UITableViewDataSource {
                     case 4:
                         cell.detailsIconImageView.image = UIImage(systemName: "building.2.crop.circle")
                         cell.detailsInfoLabel.text = user.company.name
+                        cell.isUserInteractionEnabled = false
                     default:
                         print("ERROR: \(indexPath.row)")
                         cell.detailsIconImageView.image = UIImage(systemName: "xmark")
-                        cell.detailsInfoLabel.text = user.company.name
+                        cell.detailsInfoLabel.text = ""
+                        cell.isUserInteractionEnabled = false
                     }
                     
                 }

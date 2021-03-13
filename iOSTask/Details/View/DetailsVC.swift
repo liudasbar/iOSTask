@@ -54,7 +54,7 @@ class DetailsVC: UIViewController, MFMailComposeViewControllerDelegate, ImageAct
     /// Delegates init
     func delegatesInit() {
         tableView.delegate = self
-        
+        detailsViewModel.delegate = self
         mail.delegate = self
     }
     
@@ -69,7 +69,6 @@ class DetailsVC: UIViewController, MFMailComposeViewControllerDelegate, ImageAct
     func askForImage() {
         observe(detailsViewModel.imageData) { imageDataChange in
             DispatchQueue.main.async {
-                print("3")
                 self.dataSource = DetailsTableViewDataSource(withData: self.mainViewModel.usersData.value, imageData: imageDataChange.newValue, userID: self.userID, post: self.post)
                 self.tableView.dataSource = self.dataSource
                 
@@ -84,47 +83,27 @@ class DetailsVC: UIViewController, MFMailComposeViewControllerDelegate, ImageAct
         tableView.deselectRow(at: indexPath, animated: true)
         
         let userDetails = mainViewModel.usersData.value
-        var name = ""
         
-        if let cell = self.tableView.cellForRow(at: indexPath) {
-            for selectedCell in tableView.visibleCells {
-                if selectedCell == cell {
-                    let cell: DetailsDataCell = cell as! DetailsDataCell
-                    
-                    switch indexPath.row {
-                    case 1:
-                        print("EMAIL")
-                        mail.sendMail(cell.detailsInfoLabel.text!)
-                    case 2:
-                        print("ADDRESS")
-                    case 3:
-                        print("PHONE NUMBER")
-                    case 4:
-                        print("COMPANY")
-                    default:
-                        print("ERROR ON SELECTION")
-                    }
+        for user in userDetails {
+            if userID == user.id {
+                
+                switch indexPath.row {
+                case 1:
+                    mail.sendMail(user.email)
+                case 2:
+                    launchGoogleMaps(user.address.geo.lat, user.address.geo.lng)
+                case 3:
+                    let phoneNumberSplit = user.phone.split(separator: " ")
+                    let stringNumber = phoneNumberSplit[0].trimmingCharacters(in: CharacterSet(charactersIn: "0123456789").inverted)
+                    executeCall(number: stringNumber)
+                case 4:
+                    print("COMPANY")
+                default:
+                    print("ERROR")
                 }
+                
             }
         }
-        
-//        for user in userDetails {
-//            if userID == user.id {
-//                switch indexPath.row {
-//                case 1:
-//                    print("EMAIL")
-//                    mail.sendMail(mainViewModel.usersData.value[indexPath.row].email)
-//                case 2:
-//                    print("ADDRESS")
-//                case 3:
-//                    print("PHONE NUMBER")
-//                case 4:
-//                    print("COMPANY")
-//                default:
-//                    print("ERROR ON SELECTION")
-//                }
-//            }
-//        }
     }
     
     /// Table view cells height
@@ -143,8 +122,19 @@ class DetailsVC: UIViewController, MFMailComposeViewControllerDelegate, ImageAct
         imageViewData = imageData
     }
     
-    func loadUserID(userID: Int) {
-        self.userID = userID
+    /// Data fetched - stop refresh animations
+    func stopRefresh() {
+        DispatchQueue.main.async {
+            self.refreshControl.endRefreshing()
+            print("Y")
+        }
+    }
+    
+    /// Call phone number
+    func executeCall(number: String) {
+        if let url = URL(string:"tel://\(number)"), UIApplication.shared.canOpenURL(url) {
+             UIApplication.shared.open(url)
+        }
     }
     
     /// Display error alert
@@ -152,11 +142,11 @@ class DetailsVC: UIViewController, MFMailComposeViewControllerDelegate, ImageAct
         let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertController.Style.alert)
         
         alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertAction.Style.cancel, handler: { action in
-            
+            self.stopRefresh()
         }))
         
         alert.addAction(UIAlertAction(title: "Retry", style: UIAlertAction.Style.default, handler: { action in
-            
+            self.fetchData()
         }))
         
         DispatchQueue.main.async {

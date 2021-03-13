@@ -23,14 +23,8 @@ class FetchPosts {
                 
                 //Request error
                 if error != nil {
-                    completion(false, nil, error?.localizedDescription)
-                    print(error?.localizedDescription ?? "Error")
+                    completion(false, nil, error?.localizedDescription ?? "Error")
                     return
-                }
-                
-                //Response code
-                if let httpResponse = response as? HTTPURLResponse {
-                    print(httpResponse.statusCode)
                 }
                 
                 if data != nil {
@@ -44,7 +38,6 @@ class FetchPosts {
                         } catch let error {
                             //Parsing error
                             completion(false, nil, error.localizedDescription)
-                            print(error.localizedDescription)
                         }
                     }
                     

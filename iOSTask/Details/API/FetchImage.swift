@@ -27,11 +27,6 @@ class FetchImage {
                     return
                 }
                 
-                //Response code
-                if let httpResponse = response as? HTTPURLResponse {
-                    print(httpResponse.statusCode)
-                }
-                
                 if data != nil {
                     //Return image
                     if let data = data {

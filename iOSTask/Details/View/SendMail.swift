@@ -9,7 +9,6 @@ import Foundation
 import MessageUI
 
 class Mail {
-    
     var delegate: DetailsVC?
     
     /// Send mail execution function
@@ -30,10 +29,11 @@ class Mail {
             alert.addAction(UIAlertAction(title: "Retry", style: UIAlertAction.Style.default, handler: { action in }))
         }
     }
-    
-    /// Mail and all other related child view controllers dismissal when finished
+}
+
+extension DetailsVC {
+    /// Mail controller dismiss
     func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {
-        delegate?.presentingViewController!.dismiss(animated: true, completion: nil)
         controller.dismiss(animated: true)
     }
 }

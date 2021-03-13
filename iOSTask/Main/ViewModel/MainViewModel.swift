@@ -49,7 +49,7 @@ class MainViewModel: NSObject {
                     self.getUsersDetails()
                 } else {
                     self.delegate?.stopRefresh()
-                    self.delegate?.showError(title: "Posts could not be loaded", message: "Error occured. Description: \(String(describing: errorMessage))")
+                    self.delegate?.showError(title: "Posts could not be loaded", message: "Error occured. Description: \(String(describing: errorMessage!))")
                 }
             } else {
                 //Network unreachable

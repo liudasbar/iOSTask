@@ -49,6 +49,9 @@ class MainVC: UIViewController, Activity, UITableViewDelegate {
         
         navigationItem.title = "Posts"
         navigationController?.navigationBar.prefersLargeTitles = true
+        
+        tableView.setContentOffset(CGPoint(x: 0, y: 0), animated: true)
+        self.extendedLayoutIncludesOpaqueBars = true
     }
     
     /// Data fetch
@@ -118,5 +121,9 @@ class MainVC: UIViewController, Activity, UITableViewDelegate {
         refreshControl.backgroundColor = UIColor.systemBackground
         refreshControl.addTarget(self, action: #selector(self.fetchData), for: .valueChanged)
         tableView.refreshControl = refreshControl
+    }
+    
+    @objc func refreshPulled() {
+        fetchData()
     }
 }
