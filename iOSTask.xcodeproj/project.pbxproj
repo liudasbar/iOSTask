@@ -10,6 +10,7 @@
 		C97796743287594C0AF51CE9 /* Pods_iOSTask.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D828E2C2A9CA426C32C6918A /* Pods_iOSTask.framework */; };
 		F400C4DB25FBD872007CA078 /* TableViewPostCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F400C4DA25FBD872007CA078 /* TableViewPostCell.swift */; };
 		F400C52025FCE082007CA078 /* FetchDetailsPost.swift in Sources */ = {isa = PBXBuildFile; fileRef = F400C51F25FCE082007CA078 /* FetchDetailsPost.swift */; };
+		F400C53225FCEB04007CA078 /* MainVCInit.swift in Sources */ = {isa = PBXBuildFile; fileRef = F400C53125FCEB04007CA078 /* MainVCInit.swift */; };
 		F42AD2FF25F917F400D09BCC /* Posts.swift in Sources */ = {isa = PBXBuildFile; fileRef = F42AD2FE25F917F400D09BCC /* Posts.swift */; };
 		F42AD30A25F9197500D09BCC /* MainVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F42AD30925F9197500D09BCC /* MainVC.swift */; };
 		F42AD30F25F91BDC00D09BCC /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F42AD30E25F91BDC00D09BCC /* MainViewModel.swift */; };
@@ -61,6 +62,7 @@
 		D828E2C2A9CA426C32C6918A /* Pods_iOSTask.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_iOSTask.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F400C4DA25FBD872007CA078 /* TableViewPostCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewPostCell.swift; sourceTree = "<group>"; };
 		F400C51F25FCE082007CA078 /* FetchDetailsPost.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchDetailsPost.swift; sourceTree = "<group>"; };
+		F400C53125FCEB04007CA078 /* MainVCInit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainVCInit.swift; sourceTree = "<group>"; };
 		F42AD2FE25F917F400D09BCC /* Posts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Posts.swift; sourceTree = "<group>"; };
 		F42AD30925F9197500D09BCC /* MainVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainVC.swift; sourceTree = "<group>"; };
 		F42AD30E25F91BDC00D09BCC /* MainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
@@ -171,6 +173,7 @@
 			isa = PBXGroup;
 			children = (
 				F42AD30925F9197500D09BCC /* MainVC.swift */,
+				F400C53125FCEB04007CA078 /* MainVCInit.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -502,6 +505,7 @@
 				F4AC30AD25F97C3300D73103 /* DetailsViewModel.swift in Sources */,
 				F4AC30AB25F9756900D73103 /* DetailsVC.swift in Sources */,
 				F42AD35525F9297400D09BCC /* MainTableController.swift in Sources */,
+				F400C53225FCEB04007CA078 /* MainVCInit.swift in Sources */,
 				F4589EE925FA3EDB00059CE5 /* TableViewDataCell.swift in Sources */,
 				F4589EE725FA3ECE00059CE5 /* TableViewFirstCell.swift in Sources */,
 				F4AC30B025F97C9800D73103 /* FetchDetailsImage.swift in Sources */,

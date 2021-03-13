@@ -29,29 +29,10 @@ class MainVC: UIViewController, Activity, UITableViewDelegate {
         
         delegatesInit()
         designInit()
-        
         fetchData()
         dataObservers()
-        
         pullToRefresh()
-    }
-    
-    /// Delegates init
-    func delegatesInit() {
-        tableView.delegate = self
-        mainViewModel.delegate = self
-    }
-    
-    /// Design init
-    func designInit() {
-        loadingIndicator.alpha = 1
-        tableView.decelerationRate = .normal
-        
-        navigationItem.title = "Posts"
-        navigationController?.navigationBar.prefersLargeTitles = true
-        
-        tableView.setContentOffset(CGPoint(x: 0, y: 0), animated: true)
-        self.extendedLayoutIncludesOpaqueBars = true
+        setTableViewDataSource()
     }
     
     /// Data fetch
@@ -64,10 +45,6 @@ class MainVC: UIViewController, Activity, UITableViewDelegate {
         observe(mainViewModel.postsData) { postsChange in
             self.observe(self.mainViewModel.usersData) { usersDataChange in
                 DispatchQueue.main.async {
-                    
-                    self.dataSource = MainTableViewDataSource(withData: postsChange.newValue, usersDetails: usersDataChange.newValue)
-                    self.tableView.dataSource = self.dataSource
-                    
                     self.tableView.reloadData()
                 }
             }
@@ -80,6 +57,12 @@ class MainVC: UIViewController, Activity, UITableViewDelegate {
         
         //Coordinator approach prepare for going to details screen
         coordinator.goToDetails(selfVC: self, userID: mainViewModel.postsData.value[indexPath.row].userID, postID: mainViewModel.postsData.value[indexPath.row].id)
+    }
+    
+    /// Set table view data source
+    func setTableViewDataSource() {
+        dataSource = MainTableViewDataSource(viewModel: self.mainViewModel)
+        tableView.dataSource = self.dataSource
     }
     
     /// Data started fetching - start refresh animations

@@ -48,7 +48,6 @@ class DetailsVC: UIViewController, MFMailComposeViewControllerDelegate, APIActiv
     }
     
     
-    
     /// Delegates init
     func delegatesInit() {
         tableView.delegate = self

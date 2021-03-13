@@ -10,27 +10,25 @@ import UIKit
 /// Table view data source
 class MainTableViewDataSource: NSObject, UITableViewDataSource {
     
-    var posts = MainViewModel().postsData
-    var usersDetails = MainViewModel().usersData
+    var viewModel = MainViewModel()
     
-    init(withData data: [Post], usersDetails: [UserDetails]) {
-        self.posts.value = data
-        self.usersDetails.value = usersDetails
+    init(viewModel: MainViewModel) {
+        self.viewModel = viewModel
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return posts.value.count
+        return viewModel.postsData.value.count
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "postCell", for: indexPath) as! PostCell
         
-        let post = posts.value[indexPath.row]
+        let post = viewModel.postsData.value[indexPath.row]
         
         cell.titleLabel.text = post.title
         cell.bodyLabel.text = post.body
         
-        for userDetails in usersDetails.value {
+        for userDetails in viewModel.usersData.value {
             if post.userID == userDetails.id {
                 cell.userDataLabel.text = userDetails.username + " - " + userDetails.company.name
             }
