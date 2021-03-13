@@ -1,18 +1,18 @@
 //
-//  FetchUserData.swift
+//  FetchDetailsPost.swift
 //  iOSTask
 //
-//  Created by LiudasBar on 2021-03-11.
+//  Created by LiudasBar on 2021-03-13.
 //
 
 import Foundation
 
-class FetchUserData {
+class FetchPost {
     
-    /// Fetch posts
-    func getUserData(userID: Int, completion: @escaping (Bool, UserDetails?, String?) -> Void) {
+    /// Fetch post
+    func getPost(postID: Int, completion: @escaping (Bool, Post?, String?) -> Void) {
         
-        var request = URLRequest(url: URL(string: "https://jsonplaceholder.typicode.com/users/\(userID)")! as URL, timeoutInterval: 5.0)
+        var request = URLRequest(url: URL(string: "https://jsonplaceholder.typicode.com/posts/\(postID)")! as URL, timeoutInterval: 5.0)
         
         request.httpMethod = "GET"
         
@@ -31,9 +31,9 @@ class FetchUserData {
                     //Returning API value
                     if let data = data {
                         do {
-                            let user = try JSONDecoder().decode(UserDetails.self, from: data)
+                            let post = try JSONDecoder().decode(Post.self, from: data)
                             
-                            completion(true, user, nil)
+                            completion(true, post, nil)
                             
                         } catch let error {
                             //Parsing error

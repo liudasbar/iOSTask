@@ -79,7 +79,7 @@ class MainVC: UIViewController, Activity, UITableViewDelegate {
         tableView.deselectRow(at: indexPath, animated: true)
         
         //Coordinator approach prepare for going to details screen
-        coordinator.goToDetails(selfVC: self, userID: mainViewModel.postsData.value[indexPath.row].userID, post: mainViewModel.postsData.value[indexPath.row])
+        coordinator.goToDetails(selfVC: self, userID: mainViewModel.postsData.value[indexPath.row].userID, postID: mainViewModel.postsData.value[indexPath.row].id)
     }
     
     /// Data started fetching - start refresh animations
@@ -121,9 +121,5 @@ class MainVC: UIViewController, Activity, UITableViewDelegate {
         refreshControl.backgroundColor = UIColor.systemBackground
         refreshControl.addTarget(self, action: #selector(self.fetchData), for: .valueChanged)
         tableView.refreshControl = refreshControl
-    }
-    
-    @objc func refreshPulled() {
-        fetchData()
     }
 }

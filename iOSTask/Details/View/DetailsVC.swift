@@ -8,7 +8,7 @@
 import UIKit
 import MessageUI
 
-class DetailsVC: UIViewController, MFMailComposeViewControllerDelegate, ImageActivity, UITableViewDelegate {
+class DetailsVC: UIViewController, MFMailComposeViewControllerDelegate, APIActivity, UITableViewDelegate {
     
     var coordinator: MainCoordinator!
     
@@ -20,7 +20,7 @@ class DetailsVC: UIViewController, MFMailComposeViewControllerDelegate, ImageAct
     var dataSource: DetailsTableViewDataSource?
     
     var userID = Int()
-    var post = Post(userID: 0, id: 0, title: "", body: "")
+    var postID = Int()
     
     @IBOutlet weak var tableView: UITableView!
     
@@ -41,12 +41,10 @@ class DetailsVC: UIViewController, MFMailComposeViewControllerDelegate, ImageAct
         mail = Mail()
         
         delegatesInit()
-        
         fetchData()
-        
         dataObservers()
-        
         pullToRefresh()
+        setTableViewDataSource()
     }
     
     
@@ -60,34 +58,34 @@ class DetailsVC: UIViewController, MFMailComposeViewControllerDelegate, ImageAct
     
     /// Data fetch
     @objc func fetchData() {
-        mainViewModel.getPosts(pullToRefresh: false)
+        detailsViewModel.getSingleUser(userID: userID)
         detailsViewModel.getImage(userID: userID)
+        detailsViewModel.getPost(postID: postID)
     }
     
+    /// Set table view data source
+    func setTableViewDataSource() {
+        dataSource = DetailsTableViewDataSource(viewModel: self.detailsViewModel)
+        tableView.dataSource = self.dataSource
+    }
     
     /// Detect data changes and set data source + reload data
     func dataObservers() {
-        //Observe new posts data
-        observe(mainViewModel.postsData) { postsDataChange in
+        
+        observe(detailsViewModel.postData) { postDataChange in
             DispatchQueue.main.async {
-                let newPostData = postsDataChange.newValue
-                
-                for post in newPostData {
-                    if post.id == self.post.id {
-                        self.post = post
-                        
-                        self.tableView.reloadData()
-                    }
-                }
+                self.tableView.reloadData()
             }
-            
+        }
+        
+        observe(detailsViewModel.userData) { userDataChange in
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
+            }
         }
         
         observe(detailsViewModel.imageData) { imageDataChange in
             DispatchQueue.main.async {
-                self.dataSource = DetailsTableViewDataSource(withData: self.mainViewModel.usersData.value, imageData: imageDataChange.newValue, userID: self.userID, post: self.post)
-                self.tableView.dataSource = self.dataSource
-                
                 self.tableView.reloadData()
             }
             
@@ -98,27 +96,21 @@ class DetailsVC: UIViewController, MFMailComposeViewControllerDelegate, ImageAct
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         
-        let userDetails = mainViewModel.usersData.value
+        let user = detailsViewModel.userData.value
         
-        for user in userDetails {
-            if userID == user.id {
-                
-                switch indexPath.row {
-                case 1:
-                    mail.sendMail(user.email)
-                case 2:
-                    launchGoogleMaps(user.address.geo.lat, user.address.geo.lng)
-                case 3:
-                    let phoneNumberSplit = user.phone.split(separator: " ")
-                    let stringNumber = phoneNumberSplit[0].trimmingCharacters(in: CharacterSet(charactersIn: "0123456789").inverted)
-                    executeCall(number: stringNumber)
-                case 4:
-                    print("COMPANY")
-                default:
-                    print("ERROR")
-                }
-                
-            }
+        switch indexPath.row {
+        case 1:
+            mail.sendMail(user.email)
+        case 2:
+            launchGoogleMaps(user.address.geo.lat, user.address.geo.lng)
+        case 3:
+            let phoneNumberSplit = user.phone.split(separator: " ")
+            let stringNumber = phoneNumberSplit[0].trimmingCharacters(in: CharacterSet(charactersIn: "0123456789").inverted)
+            executeCall(number: stringNumber)
+        case 4:
+            print("COMPANY")
+        default:
+            print("ERROR")
         }
     }
     
@@ -131,11 +123,6 @@ class DetailsVC: UIViewController, MFMailComposeViewControllerDelegate, ImageAct
         } else {
             return 60
         }
-    }
-    
-    /// Load image onto the imageView
-    func loadImage(imageData: Data) {
-        imageViewData = imageData
     }
     
     /// Data fetched - stop refresh animations

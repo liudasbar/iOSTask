@@ -8,17 +8,20 @@
 import Foundation
 import Hanson
 
-protocol ImageActivity {
-    func loadImage(imageData: Data)
+protocol APIActivity {
     func showError(title: String, message: String)
     func stopRefresh()
 }
 
 class DetailsViewModel: NSObject {
     
-    private var API: FetchImage!
-    var delegate: ImageActivity?
+    private var imageAPI: FetchImage!
+    private var userAPI: FetchUserData!
+    private var postAPI: FetchPost!
+    var delegate: APIActivity?
     
+    var postData = Observable(Post(userID: 0, id: 0, title: "", body: ""))
+    var userData = Observable(UserDetails(id: 0, name: "", username: "", email: "", address: Address(street: "", suite: "", city: "", zipcode: "", geo: Geo(lat: "", lng: "")), phone: "", website: "", company: Company(name: "", catchPhrase: "", bs: "")))
     var imageData = Observable(Data())
     
 //    private(set) var imageData: Data! {
@@ -32,20 +35,63 @@ class DetailsViewModel: NSObject {
     override init() {
         super.init()
         
-        API = FetchImage()
+        imageAPI = FetchImage()
+        userAPI = FetchUserData()
+        postAPI = FetchPost()
     }
     
-    /// Get posts
+    /// Get image
     func getImage(userID: Int) {
         
-        self.API.getImage(userID: userID) { (status, imageData, errorMessage) in
+        self.imageAPI.getImage(userID: userID) { (status, imageData, errorMessage) in
             
             //Check connection
             if NetworkReachability().isConnectedToNetwork() {
                 if status {
-                    //If status is OK - assign API data to postsData
+                    //If status is OK - assign API data to imageData
                     self.imageData.value = imageData!
-                    self.delegate?.loadImage(imageData: imageData!)
+                    self.delegate?.stopRefresh()
+                } else {
+                    self.delegate?.showError(title: "Image could not be loaded", message: "Error occured. Description: \(String(describing: errorMessage))")
+                }
+            } else {
+                //Network unreachable
+                self.delegate?.showError(title: "You seem to be offline", message: "Please reconnect to a network and check for any updates again.")
+            }
+        }
+    }
+    
+    /// Get single post
+    func getPost(postID: Int) {
+        
+        self.postAPI.getPost(postID: postID) { (status, postData, errorMessage) in
+            
+            //Check connection
+            if NetworkReachability().isConnectedToNetwork() {
+                if status {
+                    //If status is OK - assign API data to postData
+                    self.postData.value = postData!
+                    self.delegate?.stopRefresh()
+                } else {
+                    self.delegate?.showError(title: "Image could not be loaded", message: "Error occured. Description: \(String(describing: errorMessage))")
+                }
+            } else {
+                //Network unreachable
+                self.delegate?.showError(title: "You seem to be offline", message: "Please reconnect to a network and check for any updates again.")
+            }
+        }
+    }
+    
+    /// Get post
+    func getSingleUser(userID: Int) {
+        
+        self.userAPI.getUserData(userID: userID) { (status, singleUserData, errorMessage) in
+            
+            //Check connection
+            if NetworkReachability().isConnectedToNetwork() {
+                if status {
+                    //If status is OK - assign API data to userData
+                    self.userData.value = singleUserData!
                     self.delegate?.stopRefresh()
                 } else {
                     self.delegate?.showError(title: "Image could not be loaded", message: "Error occured. Description: \(String(describing: errorMessage))")

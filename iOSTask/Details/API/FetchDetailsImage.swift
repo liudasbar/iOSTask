@@ -6,7 +6,6 @@
 //
 
 import Foundation
-import UIKit
 
 class FetchImage {
     
@@ -23,7 +22,6 @@ class FetchImage {
                 //Request error
                 if error != nil {
                     completion(false, nil, error?.localizedDescription)
-                    print(error?.localizedDescription ?? "Error")
                     return
                 }
                 

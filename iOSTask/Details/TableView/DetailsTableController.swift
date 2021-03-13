@@ -11,16 +11,10 @@ import UIKit
 /// Table view data source
 class DetailsTableViewDataSource: NSObject, UITableViewDataSource {
     
-    var usersDetails = MainViewModel().usersData
-    var imageData = Data()
-    var userID = Int()
-    var post: Post
+    var viewModel = DetailsViewModel()
     
-    init(withData usersDetails: UsersDetails, imageData: Data, userID: Int, post: Post) {
-        self.usersDetails.value = usersDetails
-        self.imageData = imageData
-        self.userID = userID
-        self.post = post
+    init(viewModel: DetailsViewModel) {
+        self.viewModel = viewModel
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -32,17 +26,8 @@ class DetailsTableViewDataSource: NSObject, UITableViewDataSource {
             //Details first cell
             let cell = tableView.dequeueReusableCell(withIdentifier: "detailsFirstCell", for: indexPath) as! DetailsFirstCell
             
-            let userDetails = usersDetails.value
-            var name = ""
-            
-            for user in userDetails {
-                if userID == user.id {
-                    name = user.name
-                }
-            }
-            
-            cell.profileImageView?.image = UIImage(data: imageData)
-            cell.nameLabel.text = name
+            cell.profileImageView?.image = UIImage(data: viewModel.imageData.value)
+            cell.nameLabel.text = viewModel.userData.value.name
             
             return cell
             
@@ -50,33 +35,27 @@ class DetailsTableViewDataSource: NSObject, UITableViewDataSource {
             //Details info cell
             let cell = tableView.dequeueReusableCell(withIdentifier: "detailsDataCell", for: indexPath) as! DetailsDataCell
             
-            let userDetails = usersDetails.value
+            let user = viewModel.userData.value
             
-            for user in userDetails {
-                if userID == user.id {
-                    
-                    switch indexPath.row {
-                    case 1:
-                        cell.detailsIconImageView.image = UIImage(systemName: "globe")
-                        cell.detailsInfoLabel.text = user.email
-                    case 2:
-                        cell.detailsIconImageView.image = UIImage(systemName: "location.circle.fill")
-                        cell.detailsInfoLabel.text = user.address.street + " " + user.address.suite + " " + user.address.city + " " + user.address.zipcode
-                    case 3:
-                        cell.detailsIconImageView.image = UIImage(systemName: "phone.circle.fill")
-                        cell.detailsInfoLabel.text = user.phone
-                    case 4:
-                        cell.detailsIconImageView.image = UIImage(systemName: "building.2.crop.circle")
-                        cell.detailsInfoLabel.text = user.company.name
-                        cell.isUserInteractionEnabled = false
-                    default:
-                        print("ERROR: \(indexPath.row)")
-                        cell.detailsIconImageView.image = UIImage(systemName: "xmark")
-                        cell.detailsInfoLabel.text = ""
-                        cell.isUserInteractionEnabled = false
-                    }
-                    
-                }
+            switch indexPath.row {
+            case 1:
+                cell.detailsIconImageView.image = UIImage(systemName: "globe")
+                cell.detailsInfoLabel.text = user.email
+            case 2:
+                cell.detailsIconImageView.image = UIImage(systemName: "location.circle.fill")
+                cell.detailsInfoLabel.text = user.address.street + " " + user.address.suite + " " + user.address.city + " " + user.address.zipcode
+            case 3:
+                cell.detailsIconImageView.image = UIImage(systemName: "phone.circle.fill")
+                cell.detailsInfoLabel.text = user.phone
+            case 4:
+                cell.detailsIconImageView.image = UIImage(systemName: "building.2.crop.circle")
+                cell.detailsInfoLabel.text = user.company.name
+                cell.isUserInteractionEnabled = false
+            default:
+                print("ERROR: \(indexPath.row)")
+                cell.detailsIconImageView.image = UIImage(systemName: "xmark")
+                cell.detailsInfoLabel.text = ""
+                cell.isUserInteractionEnabled = false
             }
             
             return cell
@@ -85,8 +64,8 @@ class DetailsTableViewDataSource: NSObject, UITableViewDataSource {
             //Post cell
             let cell = tableView.dequeueReusableCell(withIdentifier: "postCell", for: indexPath) as! DetailsPostCell
             
-            cell.postTitle.text = post.title
-            cell.postBody.text = post.body
+            cell.postTitle.text = viewModel.postData.value.title
+            cell.postBody.text = viewModel.postData.value.body
             
             return cell
         }

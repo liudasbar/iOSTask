@@ -9,11 +9,12 @@
 /* Begin PBXBuildFile section */
 		C97796743287594C0AF51CE9 /* Pods_iOSTask.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D828E2C2A9CA426C32C6918A /* Pods_iOSTask.framework */; };
 		F400C4DB25FBD872007CA078 /* TableViewPostCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F400C4DA25FBD872007CA078 /* TableViewPostCell.swift */; };
+		F400C52025FCE082007CA078 /* FetchDetailsPost.swift in Sources */ = {isa = PBXBuildFile; fileRef = F400C51F25FCE082007CA078 /* FetchDetailsPost.swift */; };
 		F42AD2FF25F917F400D09BCC /* Posts.swift in Sources */ = {isa = PBXBuildFile; fileRef = F42AD2FE25F917F400D09BCC /* Posts.swift */; };
 		F42AD30A25F9197500D09BCC /* MainVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F42AD30925F9197500D09BCC /* MainVC.swift */; };
 		F42AD30F25F91BDC00D09BCC /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F42AD30E25F91BDC00D09BCC /* MainViewModel.swift */; };
 		F42AD31425F91C5000D09BCC /* UserDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = F42AD31325F91C5000D09BCC /* UserDetails.swift */; };
-		F42AD31925F9205B00D09BCC /* FetchPosts.swift in Sources */ = {isa = PBXBuildFile; fileRef = F42AD31825F9205B00D09BCC /* FetchPosts.swift */; };
+		F42AD31925F9205B00D09BCC /* FetchUserData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F42AD31825F9205B00D09BCC /* FetchUserData.swift */; };
 		F42AD35525F9297400D09BCC /* MainTableController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F42AD35425F9297400D09BCC /* MainTableController.swift */; };
 		F4589EE425FA32EC00059CE5 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = F4589EE325FA32EC00059CE5 /* README.md */; };
 		F4589EE725FA3ECE00059CE5 /* TableViewFirstCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4589EE625FA3ECE00059CE5 /* TableViewFirstCell.swift */; };
@@ -31,7 +32,7 @@
 		F4AC30A925F9755500D73103 /* SendMail.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4AC30A825F9755500D73103 /* SendMail.swift */; };
 		F4AC30AB25F9756900D73103 /* DetailsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4AC30AA25F9756900D73103 /* DetailsVC.swift */; };
 		F4AC30AD25F97C3300D73103 /* DetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4AC30AC25F97C3300D73103 /* DetailsViewModel.swift */; };
-		F4AC30B025F97C9800D73103 /* FetchImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4AC30AF25F97C9800D73103 /* FetchImage.swift */; };
+		F4AC30B025F97C9800D73103 /* FetchDetailsImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4AC30AF25F97C9800D73103 /* FetchDetailsImage.swift */; };
 		F4AC30B525F987D100D73103 /* FetchUsersData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4AC30B425F987D100D73103 /* FetchUsersData.swift */; };
 		F4C567C625FA414A008CE5A0 /* DetailsTableController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4C567C525FA414A008CE5A0 /* DetailsTableController.swift */; };
 		F4C567C825FA5336008CE5A0 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4C567C725FA5336008CE5A0 /* Coordinator.swift */; };
@@ -59,11 +60,12 @@
 		98D7B67D7DE4DCA501993F0D /* Pods-iOSTask.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iOSTask.release.xcconfig"; path = "Target Support Files/Pods-iOSTask/Pods-iOSTask.release.xcconfig"; sourceTree = "<group>"; };
 		D828E2C2A9CA426C32C6918A /* Pods_iOSTask.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_iOSTask.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F400C4DA25FBD872007CA078 /* TableViewPostCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewPostCell.swift; sourceTree = "<group>"; };
+		F400C51F25FCE082007CA078 /* FetchDetailsPost.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchDetailsPost.swift; sourceTree = "<group>"; };
 		F42AD2FE25F917F400D09BCC /* Posts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Posts.swift; sourceTree = "<group>"; };
 		F42AD30925F9197500D09BCC /* MainVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainVC.swift; sourceTree = "<group>"; };
 		F42AD30E25F91BDC00D09BCC /* MainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
 		F42AD31325F91C5000D09BCC /* UserDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDetails.swift; sourceTree = "<group>"; };
-		F42AD31825F9205B00D09BCC /* FetchPosts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchPosts.swift; sourceTree = "<group>"; };
+		F42AD31825F9205B00D09BCC /* FetchUserData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchUserData.swift; sourceTree = "<group>"; };
 		F42AD35425F9297400D09BCC /* MainTableController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTableController.swift; sourceTree = "<group>"; };
 		F4589EE325FA32EC00059CE5 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = SOURCE_ROOT; };
 		F4589EE625FA3ECE00059CE5 /* TableViewFirstCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewFirstCell.swift; sourceTree = "<group>"; };
@@ -87,7 +89,7 @@
 		F4AC30A825F9755500D73103 /* SendMail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendMail.swift; sourceTree = "<group>"; };
 		F4AC30AA25F9756900D73103 /* DetailsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsVC.swift; sourceTree = "<group>"; };
 		F4AC30AC25F97C3300D73103 /* DetailsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsViewModel.swift; sourceTree = "<group>"; };
-		F4AC30AF25F97C9800D73103 /* FetchImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchImage.swift; sourceTree = "<group>"; };
+		F4AC30AF25F97C9800D73103 /* FetchDetailsImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchDetailsImage.swift; sourceTree = "<group>"; };
 		F4AC30B425F987D100D73103 /* FetchUsersData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchUsersData.swift; sourceTree = "<group>"; };
 		F4C567C525FA414A008CE5A0 /* DetailsTableController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsTableController.swift; sourceTree = "<group>"; };
 		F4C567C725FA5336008CE5A0 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
@@ -176,7 +178,7 @@
 		F42AD35925F92A7100D09BCC /* API */ = {
 			isa = PBXGroup;
 			children = (
-				F42AD31825F9205B00D09BCC /* FetchPosts.swift */,
+				F42AD31825F9205B00D09BCC /* FetchUserData.swift */,
 				F4AC30B425F987D100D73103 /* FetchUsersData.swift */,
 			);
 			path = API;
@@ -291,7 +293,8 @@
 		F4AC30AE25F97C8D00D73103 /* API */ = {
 			isa = PBXGroup;
 			children = (
-				F4AC30AF25F97C9800D73103 /* FetchImage.swift */,
+				F4AC30AF25F97C9800D73103 /* FetchDetailsImage.swift */,
+				F400C51F25FCE082007CA078 /* FetchDetailsPost.swift */,
 			);
 			path = API;
 			sourceTree = "<group>";
@@ -491,16 +494,17 @@
 				F400C4DB25FBD872007CA078 /* TableViewPostCell.swift in Sources */,
 				F4AC30A925F9755500D73103 /* SendMail.swift in Sources */,
 				F49F285025F913C30036D68D /* AppDelegate.swift in Sources */,
+				F400C52025FCE082007CA078 /* FetchDetailsPost.swift in Sources */,
 				F42AD2FF25F917F400D09BCC /* Posts.swift in Sources */,
 				F49F285225F913C30036D68D /* SceneDelegate.swift in Sources */,
 				F4C567C825FA5336008CE5A0 /* Coordinator.swift in Sources */,
-				F42AD31925F9205B00D09BCC /* FetchPosts.swift in Sources */,
+				F42AD31925F9205B00D09BCC /* FetchUserData.swift in Sources */,
 				F4AC30AD25F97C3300D73103 /* DetailsViewModel.swift in Sources */,
 				F4AC30AB25F9756900D73103 /* DetailsVC.swift in Sources */,
 				F42AD35525F9297400D09BCC /* MainTableController.swift in Sources */,
 				F4589EE925FA3EDB00059CE5 /* TableViewDataCell.swift in Sources */,
 				F4589EE725FA3ECE00059CE5 /* TableViewFirstCell.swift in Sources */,
-				F4AC30B025F97C9800D73103 /* FetchImage.swift in Sources */,
+				F4AC30B025F97C9800D73103 /* FetchDetailsImage.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
