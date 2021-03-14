@@ -70,7 +70,6 @@ class DetailsVC: UIViewController, MFMailComposeViewControllerDelegate, APIActiv
     
     /// Detect data changes and set data source + reload data
     func dataObservers() {
-        
         observe(detailsViewModel.postData) { postDataChange in
             DispatchQueue.main.async {
                 self.tableView.reloadData()
@@ -87,7 +86,6 @@ class DetailsVC: UIViewController, MFMailComposeViewControllerDelegate, APIActiv
             DispatchQueue.main.async {
                 self.tableView.reloadData()
             }
-            
         }
     }
     

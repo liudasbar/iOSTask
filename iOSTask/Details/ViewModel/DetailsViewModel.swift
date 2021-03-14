@@ -15,9 +15,13 @@ protocol APIActivity {
 
 class DetailsViewModel: NSObject {
     
+    let postsContext = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+    let userDetailsContext = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+    
     private var imageAPI: FetchImage!
     private var userAPI: FetchUserData!
     private var postAPI: FetchPost!
+    private var mainViewModel: MainViewModel!
     var delegate: APIActivity?
     
     var postData = Observable(PostStruct(userID: 0, id: 0, title: "", body: ""))
@@ -38,6 +42,7 @@ class DetailsViewModel: NSObject {
         imageAPI = FetchImage()
         userAPI = FetchUserData()
         postAPI = FetchPost()
+        mainViewModel = MainViewModel()
     }
     
     /// Get image
@@ -52,11 +57,10 @@ class DetailsViewModel: NSObject {
                     self.imageData.value = imageData!
                     self.delegate?.stopRefresh()
                 } else {
-                    self.delegate?.showError(title: "Image could not be loaded", message: "Error occured. Description: \(String(describing: errorMessage))")
+                    self.delegate?.showError(title: "Image could not be loaded", message: "Error occured. Description: \(errorMessage!)")
                 }
             } else {
                 //Network unreachable
-                self.delegate?.showError(title: "You seem to be offline", message: "Please reconnect to a network and check for any updates again.")
             }
         }
     }
@@ -73,11 +77,14 @@ class DetailsViewModel: NSObject {
                     self.postData.value = postData!
                     self.delegate?.stopRefresh()
                 } else {
-                    self.delegate?.showError(title: "Image could not be loaded", message: "Error occured. Description: \(String(describing: errorMessage))")
+                    self.delegate?.showError(title: "Post could not be loaded", message: "Error occured. Description: \(errorMessage!)")
                 }
             } else {
                 //Network unreachable
-                self.delegate?.showError(title: "You seem to be offline", message: "Please reconnect to a network and check for any updates again.")
+                self.mainViewModel.getPosts(pullToRefresh: false)
+                self.mainViewModel.getUsersDetails()
+                
+                self.retrieveDatabasePost(postID: postID)
             }
         }
     }
@@ -94,11 +101,11 @@ class DetailsViewModel: NSObject {
                     self.userData.value = singleUserData!
                     self.delegate?.stopRefresh()
                 } else {
-                    self.delegate?.showError(title: "Image could not be loaded", message: "Error occured. Description: \(String(describing: errorMessage))")
+                    self.delegate?.showError(title: "User data could not be loaded", message: "Error occured. Description: \(errorMessage!)")
                 }
             } else {
                 //Network unreachable
-                self.delegate?.showError(title: "You seem to be offline", message: "Please reconnect to a network and check for any updates again.")
+                self.retrieveDatabaseUserDetails(userID: userID)
             }
         }
     }

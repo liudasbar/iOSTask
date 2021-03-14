@@ -57,7 +57,7 @@ class MainViewModel: NSObject {
                     
                 } else {
                     self.delegate?.stopRefresh()
-                    self.delegate?.showError(title: "Posts could not be loaded", message: "Error occured. Description: \(String(describing: errorMessage!))")
+                    self.delegate?.showError(title: "Posts could not be loaded", message: "Error occured. Description: \(errorMessage!)")
                 }
                 
             } else {
@@ -98,7 +98,7 @@ class MainViewModel: NSObject {
                             self.delegate?.stopRefresh()
                         } else {
                             self.delegate?.stopRefresh()
-                            self.delegate?.showError(title: "User details could not be loaded", message: "Error occured. Description: \(String(describing: errorMessage))")
+                            self.delegate?.showError(title: "User details could not be loaded", message: "Error occured. Description: \(errorMessage!)")
                         }
                     }
                 }

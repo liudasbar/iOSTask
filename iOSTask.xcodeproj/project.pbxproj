@@ -22,6 +22,8 @@
 		F4589EE925FA3EDB00059CE5 /* TableViewDataCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4589EE825FA3EDB00059CE5 /* TableViewDataCell.swift */; };
 		F486ACD225FE41690032FCB8 /* MainViewModelPostsDB.swift in Sources */ = {isa = PBXBuildFile; fileRef = F486ACD125FE41690032FCB8 /* MainViewModelPostsDB.swift */; };
 		F486ACD725FE57250032FCB8 /* MainViewModelUsersDetailsDB.swift in Sources */ = {isa = PBXBuildFile; fileRef = F486ACD625FE57250032FCB8 /* MainViewModelUsersDetailsDB.swift */; };
+		F486ACDC25FE710E0032FCB8 /* DetailsViewModelPostDB.swift in Sources */ = {isa = PBXBuildFile; fileRef = F486ACDB25FE710E0032FCB8 /* DetailsViewModelPostDB.swift */; };
+		F486ACE125FE711B0032FCB8 /* DetailsViewModelUserDetailsDB.swift in Sources */ = {isa = PBXBuildFile; fileRef = F486ACE025FE711A0032FCB8 /* DetailsViewModelUserDetailsDB.swift */; };
 		F4949C3525FCF9DB00E187B9 /* iOSTaskCoreData.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = F4949C3325FCF9DB00E187B9 /* iOSTaskCoreData.xcdatamodeld */; };
 		F49F285025F913C30036D68D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F49F284F25F913C30036D68D /* AppDelegate.swift */; };
 		F49F285225F913C30036D68D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F49F285125F913C30036D68D /* SceneDelegate.swift */; };
@@ -76,6 +78,8 @@
 		F4589EE825FA3EDB00059CE5 /* TableViewDataCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewDataCell.swift; sourceTree = "<group>"; };
 		F486ACD125FE41690032FCB8 /* MainViewModelPostsDB.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModelPostsDB.swift; sourceTree = "<group>"; };
 		F486ACD625FE57250032FCB8 /* MainViewModelUsersDetailsDB.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModelUsersDetailsDB.swift; sourceTree = "<group>"; };
+		F486ACDB25FE710E0032FCB8 /* DetailsViewModelPostDB.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsViewModelPostDB.swift; sourceTree = "<group>"; };
+		F486ACE025FE711A0032FCB8 /* DetailsViewModelUserDetailsDB.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsViewModelUserDetailsDB.swift; sourceTree = "<group>"; };
 		F4949C3425FCF9DB00E187B9 /* iOSTaskCoreData.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = iOSTaskCoreData.xcdatamodel; sourceTree = "<group>"; };
 		F49F284C25F913C30036D68D /* iOSTask.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iOSTask.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F49F284F25F913C30036D68D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -287,6 +291,8 @@
 			isa = PBXGroup;
 			children = (
 				F4AC30AC25F97C3300D73103 /* DetailsViewModel.swift */,
+				F486ACDB25FE710E0032FCB8 /* DetailsViewModelPostDB.swift */,
+				F486ACE025FE711A0032FCB8 /* DetailsViewModelUserDetailsDB.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -484,6 +490,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F486ACE125FE711B0032FCB8 /* DetailsViewModelUserDetailsDB.swift in Sources */,
 				F4AC30A325F9659800D73103 /* CheckInternetConnection.swift in Sources */,
 				F4AC30B525F987D100D73103 /* FetchUsersData.swift in Sources */,
 				F4AC309D25F9368A00D73103 /* TableViewCell.swift in Sources */,
@@ -507,6 +514,7 @@
 				F486ACD725FE57250032FCB8 /* MainViewModelUsersDetailsDB.swift in Sources */,
 				F4589EE925FA3EDB00059CE5 /* TableViewDataCell.swift in Sources */,
 				F486ACD225FE41690032FCB8 /* MainViewModelPostsDB.swift in Sources */,
+				F486ACDC25FE710E0032FCB8 /* DetailsViewModelPostDB.swift in Sources */,
 				F4589EE725FA3ECE00059CE5 /* TableViewFirstCell.swift in Sources */,
 				F4AC30B025F97C9800D73103 /* FetchDetailsImage.swift in Sources */,
 			);

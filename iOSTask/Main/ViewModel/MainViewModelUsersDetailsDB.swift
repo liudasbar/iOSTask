@@ -23,7 +23,6 @@ extension MainViewModel {
         } catch let error {
             self.delegate?.showError(title: "Error deleting database users data", message: "Reason: \(error.localizedDescription)")
         }
-        
     }
     
     /// Save Core Data users details
@@ -95,7 +94,7 @@ extension MainViewModel {
             }
             
         } catch let error {
-            self.delegate?.showError(title: "Error loading posts data from database", message: "Reason: \(error.localizedDescription)")
+            self.delegate?.showError(title: "Error loading users data from database", message: "Reason: \(error.localizedDescription)")
         }
     }
 }
