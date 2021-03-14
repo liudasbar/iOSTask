@@ -77,7 +77,7 @@ class MainVC: UIViewController, Activity, UITableViewDelegate {
         DispatchQueue.main.async {
             self.loadingIndicator.stopAnimating()
             self.refreshControl.endRefreshing()
-            print(self.tableView.numberOfRows(inSection: 0))
+            //print(self.tableView.numberOfRows(inSection: 0))
         }
     }
     

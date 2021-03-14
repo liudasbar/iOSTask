@@ -11,13 +11,14 @@ import CoreData
 extension MainViewModel {
     /// Remove all existing Core Data posts
     func removeDatabasePosts() {
+        print("Removing database posts")
         
         let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Post")
         let deleteRequest = NSBatchDeleteRequest(fetchRequest: fetchRequest)
         
         do {
-            try self.context.execute(deleteRequest)
-            try self.context.save()
+            try self.postsContext.execute(deleteRequest)
+            try self.postsContext.save()
             
         } catch let error {
             self.delegate?.showError(title: "Error deleting database posts data", message: "Reason: \(error.localizedDescription)")
@@ -26,25 +27,23 @@ extension MainViewModel {
     
     /// Save Core Data posts
     func saveDatabasePosts() {
+        print("Saving database posts")
+        
+        //Iterate through all posts
+        for postData in self.postsData.value {
+            
+            //Create object in the context
+            let postObject = Post(context: self.postsContext)
+            
+            //Save each post data to database
+            postObject.id = Int64(postData.id)
+            postObject.userID = Int64(postData.userID)
+            postObject.title = postData.title
+            postObject.body = postData.body
+        }
+        
         do {
-            privateMOC.parent = context
-            
-            privateMOC.performAndWait {
-                //Iterate through all posts
-                for postData in self.postsData.value {
-                    
-                    //Create object in the context
-                    let postObject = Post(context: self.context)
-                    
-                    //Save each post data to database
-                    postObject.id = Int64(postData.id)
-                    postObject.userID = Int64(postData.userID)
-                    postObject.title = postData.title
-                    postObject.body = postData.body
-                }
-            }
-            
-            try self.privateMOC.save()
+            try self.postsContext.save()
             
         } catch let error {
             self.delegate?.showError(title: "Error saving posts data to offline database", message: "Reason: \(error.localizedDescription)")
@@ -53,8 +52,10 @@ extension MainViewModel {
     
     /// Retrieve Core Data posts
     func retrieveDatabasePosts() {
+        print("Retrieving database posts")
+        
         do {
-            let postsEntity = try self.context.fetch(Post.fetchRequest())
+            let postsEntity = try self.postsContext.fetch(Post.fetchRequest())
             
             //Iterate through all posts in database
             for post in postsEntity as! [Post] {

@@ -18,7 +18,8 @@ protocol Activity {
 
 class MainViewModel: NSObject {
     
-    let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+    let postsContext = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+    let userDetailsContext = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     
     private var postsAPI: FetchPosts!
     private var userDetailsAPI: FetchUserData!
@@ -26,8 +27,6 @@ class MainViewModel: NSObject {
     
     var postsData = Observable([PostStruct]())
     var usersData = Observable([UserDetailsStruct]())
-    
-    let privateMOC = NSManagedObjectContext(concurrencyType: .privateQueueConcurrencyType) //https://developer.apple.com/library/archive/documentation/Cocoa/Conceptual/CoreData/Concurrency.html
     
     override init() {
         super.init()
@@ -63,7 +62,6 @@ class MainViewModel: NSObject {
                 
             } else {
                 //Network unreachable
-                
                 //Remove all posts data
                 self.postsData.value.removeAll()
                 
@@ -79,17 +77,16 @@ class MainViewModel: NSObject {
         //Array of all users IDs
         var userIDs: [Int] = []
         
-        for post in postsData.value {
-            
-            //Append user ID only if it is not present in the array
-            if !userIDs.contains(post.userID) {
-                userIDs.append(post.userID)
+        if NetworkReachability().isConnectedToNetwork() {
+            for post in postsData.value {
                 
-                //Network reachable
-                self.userDetailsAPI.getUserData(userID: post.userID) { (status, data, errorMessage) in
+                //Append user ID only if it is not present in the array
+                if !userIDs.contains(post.userID) {
+                    userIDs.append(post.userID)
                     
-                    //Check connection
-                    if NetworkReachability().isConnectedToNetwork() {
+                    //Network reachable
+                    self.userDetailsAPI.getUserData(userID: post.userID) { (status, data, errorMessage) in
+                        
                         if status {
                             //If status is OK - assign API data to usersData
                             self.usersData.value.append(data!)
@@ -103,17 +100,19 @@ class MainViewModel: NSObject {
                             self.delegate?.stopRefresh()
                             self.delegate?.showError(title: "User details could not be loaded", message: "Error occured. Description: \(String(describing: errorMessage))")
                         }
-                    } else {
-                        //Remove all users data
-                        self.usersData.value.removeAll()
-                        
-                        self.retrieveDatabaseUsersDetails()
-                        
-                        self.delegate?.stopRefresh()
-                        self.delegate?.showError(title: "You seem to be offline", message: "Showing offline data. Please reconnect to a network for the newest information.")
                     }
                 }
             }
+            
+        } else {
+            //Network unreachable
+            //Remove all users data
+            self.usersData.value.removeAll()
+            
+            self.retrieveDatabaseUsersDetails()
+            
+            self.delegate?.stopRefresh()
+            self.delegate?.showError(title: "You seem to be offline", message: "Showing offline data. Please reconnect to a network for the newest information.")
         }
     }
 }

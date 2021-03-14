@@ -11,54 +11,51 @@ import CoreData
 extension MainViewModel {
     /// Remove all existing Core Data users details
     func removeDatabaseUersDetails() {
+        print("Removing database users details")
         
         let fetchRequestUserDetails = NSFetchRequest<NSFetchRequestResult>(entityName: "UserDetails")
         let deleteRequestUserDetails = NSBatchDeleteRequest(fetchRequest: fetchRequestUserDetails)
         
-        privateMOC.parent = context
-        
-        privateMOC.performAndWait {
-            do {
-                try self.privateMOC.execute(deleteRequestUserDetails)
-                try self.privateMOC.save()
-                
-            } catch let error {
-                self.delegate?.showError(title: "Error deleting database users data", message: "Reason: \(error.localizedDescription)")
-            }
+        do {
+            try self.userDetailsContext.execute(deleteRequestUserDetails)
+            try self.userDetailsContext.save()
+            
+        } catch let error {
+            self.delegate?.showError(title: "Error deleting database users data", message: "Reason: \(error.localizedDescription)")
         }
         
     }
     
     /// Save Core Data users details
     func saveUsersDetailsPosts() {
+        print("Saving database users details")
+        
+        //Iterate through all posts
+        for userDetailsData in self.usersData.value {
+            
+            //Create object in the context
+            let userDetailsObject = UserDetails(context: self.userDetailsContext)
+            
+            //Save each post data to database
+            userDetailsObject.id = Int64(userDetailsData.id)
+            userDetailsObject.name = userDetailsData.name
+            userDetailsObject.username = userDetailsData.username
+            userDetailsObject.email = userDetailsData.email
+            userDetailsObject.phone = userDetailsData.phone
+            userDetailsObject.website = userDetailsData.website
+            userDetailsObject.addressCity = userDetailsData.address.city
+            userDetailsObject.addressStreet = userDetailsData.address.street
+            userDetailsObject.addressZipcode = userDetailsData.address.zipcode
+            userDetailsObject.addressSuite = userDetailsData.address.suite
+            userDetailsObject.addressGeoLat = userDetailsData.address.geo.lat
+            userDetailsObject.addressGeoLng = userDetailsData.address.geo.lng
+            userDetailsObject.companyName = userDetailsData.company.name
+            userDetailsObject.companyBs = userDetailsData.company.bs
+            userDetailsObject.companyCatchPhrase = userDetailsData.company.catchPhrase
+            
+        }
         do {
-            //Iterate through all posts
-            for userDetailsData in self.usersData.value {
-                
-                //Create object in the context
-                let userDetailsObject = UserDetails(context: self.context)
-                
-                //Save each post data to database
-                userDetailsObject.id = Int64(userDetailsData.id)
-                userDetailsObject.name = userDetailsData.name
-                userDetailsObject.username = userDetailsData.username
-                userDetailsObject.email = userDetailsData.email
-                userDetailsObject.phone = userDetailsData.phone
-                userDetailsObject.website = userDetailsData.website
-                userDetailsObject.addressCity = userDetailsData.address.city
-                userDetailsObject.addressStreet = userDetailsData.address.street
-                userDetailsObject.addressZipcode = userDetailsData.address.zipcode
-                userDetailsObject.addressSuite = userDetailsData.address.suite
-                userDetailsObject.addressGeoLat = userDetailsData.address.geo.lat
-                userDetailsObject.addressGeoLng = userDetailsData.address.geo.lng
-                userDetailsObject.companyName = userDetailsData.company.name
-                userDetailsObject.companyBs = userDetailsData.company.bs
-                userDetailsObject.companyCatchPhrase = userDetailsData.company.catchPhrase
-                
-                try self.context.save()
-            }
-            
-            
+            try self.userDetailsContext.save()
             
         } catch let error {
             self.delegate?.showError(title: "Error saving users data to offline database", message: "Reason: \(error.localizedDescription)")
@@ -69,8 +66,10 @@ extension MainViewModel {
     
     /// Retrieve Core Data users details
     func retrieveDatabaseUsersDetails() {
+        print("Retrieving database users details")
+        
         do {
-            let usersDetailsEntity = try self.context.fetch(UserDetails.fetchRequest())
+            let usersDetailsEntity = try self.userDetailsContext.fetch(UserDetails.fetchRequest())
             
             //Iterate through all posts in database
             for userDetails in usersDetailsEntity as! [UserDetails] {
