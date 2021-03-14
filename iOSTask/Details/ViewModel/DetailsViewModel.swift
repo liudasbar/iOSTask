@@ -20,8 +20,8 @@ class DetailsViewModel: NSObject {
     private var postAPI: FetchPost!
     var delegate: APIActivity?
     
-    var postData = Observable(Post(userID: 0, id: 0, title: "", body: ""))
-    var userData = Observable(UserDetails(id: 0, name: "", username: "", email: "", address: Address(street: "", suite: "", city: "", zipcode: "", geo: Geo(lat: "", lng: "")), phone: "", website: "", company: Company(name: "", catchPhrase: "", bs: "")))
+    var postData = Observable(PostStruct(userID: 0, id: 0, title: "", body: ""))
+    var userData = Observable(UserDetailsStruct(id: 0, name: "", username: "", email: "", address: AddressStruct(street: "", suite: "", city: "", zipcode: "", geo: GeoStruct(lat: "", lng: "")), phone: "", website: "", company: CompanyStruct(name: "", catchPhrase: "", bs: "")))
     var imageData = Observable(Data())
     
 //    private(set) var imageData: Data! {

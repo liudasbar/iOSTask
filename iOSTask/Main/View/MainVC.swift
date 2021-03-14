@@ -80,6 +80,17 @@ class MainVC: UIViewController, Activity, UITableViewDelegate {
         }
     }
     
+    func offlineDataLoad() {
+        DispatchQueue.main.async {
+            self.loadingIndicator.stopAnimating()
+            self.refreshControl.endRefreshing()
+            
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
+                self.tableView.reloadData()
+            }
+        }
+    }
+    
     /// Display error alert
     func showError(title: String, message: String) {
         let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertController.Style.alert)

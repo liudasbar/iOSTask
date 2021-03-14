@@ -10,7 +10,7 @@ import Foundation
 class FetchUserData {
     
     /// Fetch posts
-    func getUserData(userID: Int, completion: @escaping (Bool, UserDetails?, String?) -> Void) {
+    func getUserData(userID: Int, completion: @escaping (Bool, UserDetailsStruct?, String?) -> Void) {
         
         var request = URLRequest(url: URL(string: "https://jsonplaceholder.typicode.com/users/\(userID)")! as URL, timeoutInterval: 5.0)
         
@@ -31,7 +31,7 @@ class FetchUserData {
                     //Returning API value
                     if let data = data {
                         do {
-                            let user = try JSONDecoder().decode(UserDetails.self, from: data)
+                            let user = try JSONDecoder().decode(UserDetailsStruct.self, from: data)
                             
                             completion(true, user, nil)
                             

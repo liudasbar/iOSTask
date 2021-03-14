@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="17709" systemVersion="20D74" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="Address" representedClassName="Address" parentEntity="UserDetails" syncable="YES" codeGenerationType="class">
+        <attribute name="city" attributeType="String"/>
+        <attribute name="geo" optional="YES" attributeType="Transformable" valueTransformerName="NSSecureUnarchiveFromData" customClassName="Geo"/>
+        <attribute name="street" attributeType="String"/>
+        <attribute name="suite" attributeType="String"/>
+        <attribute name="zipcode" attributeType="String"/>
+    </entity>
+    <entity name="Company" representedClassName="Company" parentEntity="UserDetails" syncable="YES" codeGenerationType="class">
+        <attribute name="bs" attributeType="String"/>
+        <attribute name="catchPhrase" attributeType="String"/>
+        <attribute name="companyName" attributeType="String"/>
+    </entity>
+    <entity name="Geo" representedClassName="Geo" parentEntity="UserDetails" syncable="YES" codeGenerationType="class">
+        <attribute name="lat" attributeType="String"/>
+        <attribute name="lng" attributeType="String"/>
+    </entity>
+    <entity name="Post" representedClassName="Post" syncable="YES" codeGenerationType="class">
+        <attribute name="body" attributeType="String"/>
+        <attribute name="id" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="title" attributeType="String"/>
+        <attribute name="userID" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+    </entity>
+    <entity name="UserDetails" representedClassName="UserDetails" syncable="YES" codeGenerationType="class">
+        <attribute name="address" optional="YES" attributeType="Transformable" valueTransformerName="NSSecureUnarchiveFromData" customClassName="Address"/>
+        <attribute name="company" optional="YES" attributeType="Transformable" valueTransformerName="NSSecureUnarchiveFromData" customClassName="Company"/>
+        <attribute name="email" attributeType="String"/>
+        <attribute name="id" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="name" attributeType="String"/>
+        <attribute name="phone" attributeType="String"/>
+        <attribute name="username" attributeType="String"/>
+        <attribute name="website" attributeType="String"/>
+    </entity>
+    <elements>
+        <element name="Address" positionX="1.291015625" positionY="-231.479248046875" width="128" height="104"/>
+        <element name="Company" positionX="2.999267578125" positionY="-77.38284301757812" width="128" height="74"/>
+        <element name="Geo" positionX="-49.98779296875" positionY="66.234619140625" width="128" height="59"/>
+        <element name="Post" positionX="-218.8751220703125" positionY="-400.4116821289062" width="128" height="89"/>
+        <element name="UserDetails" positionX="-288.0487060546875" positionY="-161.4981689453125" width="123.068359375" height="149"/>
+    </elements>
+</model>

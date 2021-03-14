@@ -10,7 +10,7 @@ import Foundation
 class FetchPost {
     
     /// Fetch post
-    func getPost(postID: Int, completion: @escaping (Bool, Post?, String?) -> Void) {
+    func getPost(postID: Int, completion: @escaping (Bool, PostStruct?, String?) -> Void) {
         
         var request = URLRequest(url: URL(string: "https://jsonplaceholder.typicode.com/posts/\(postID)")! as URL, timeoutInterval: 5.0)
         
@@ -31,7 +31,7 @@ class FetchPost {
                     //Returning API value
                     if let data = data {
                         do {
-                            let post = try JSONDecoder().decode(Post.self, from: data)
+                            let post = try JSONDecoder().decode(PostStruct.self, from: data)
                             
                             completion(true, post, nil)
                             

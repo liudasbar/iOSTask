@@ -8,7 +8,7 @@
 import Foundation
 
 /// Post model
-struct Post: Codable {
+struct PostStruct: Codable {
     let userID, id: Int
     let title, body: String
 
@@ -18,5 +18,5 @@ struct Post: Codable {
     }
 }
 
-typealias Posts = [Post]
+typealias Posts = [PostStruct]
 

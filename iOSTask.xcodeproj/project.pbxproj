@@ -20,9 +20,9 @@
 		F4589EE425FA32EC00059CE5 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = F4589EE325FA32EC00059CE5 /* README.md */; };
 		F4589EE725FA3ECE00059CE5 /* TableViewFirstCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4589EE625FA3ECE00059CE5 /* TableViewFirstCell.swift */; };
 		F4589EE925FA3EDB00059CE5 /* TableViewDataCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4589EE825FA3EDB00059CE5 /* TableViewDataCell.swift */; };
+		F4949C3525FCF9DB00E187B9 /* iOSTaskCoreData.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = F4949C3325FCF9DB00E187B9 /* iOSTaskCoreData.xcdatamodeld */; };
 		F49F285025F913C30036D68D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F49F284F25F913C30036D68D /* AppDelegate.swift */; };
 		F49F285225F913C30036D68D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F49F285125F913C30036D68D /* SceneDelegate.swift */; };
-		F49F285425F913C30036D68D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F49F285325F913C30036D68D /* ViewController.swift */; };
 		F49F285725F913C30036D68D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F49F285525F913C30036D68D /* Main.storyboard */; };
 		F49F285925F913C70036D68D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F49F285825F913C70036D68D /* Assets.xcassets */; };
 		F49F285C25F913C70036D68D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F49F285A25F913C70036D68D /* LaunchScreen.storyboard */; };
@@ -72,10 +72,10 @@
 		F4589EE325FA32EC00059CE5 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = SOURCE_ROOT; };
 		F4589EE625FA3ECE00059CE5 /* TableViewFirstCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewFirstCell.swift; sourceTree = "<group>"; };
 		F4589EE825FA3EDB00059CE5 /* TableViewDataCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewDataCell.swift; sourceTree = "<group>"; };
+		F4949C3425FCF9DB00E187B9 /* iOSTaskCoreData.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = iOSTaskCoreData.xcdatamodel; sourceTree = "<group>"; };
 		F49F284C25F913C30036D68D /* iOSTask.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iOSTask.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F49F284F25F913C30036D68D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F49F285125F913C30036D68D /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		F49F285325F913C30036D68D /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		F49F285625F913C30036D68D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		F49F285825F913C70036D68D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F49F285B25F913C70036D68D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -144,7 +144,6 @@
 			isa = PBXGroup;
 			children = (
 				F42AD35925F92A7100D09BCC /* API */,
-				F42AD2FB25F9179D00D09BCC /* Model */,
 				F42AD2FC25F917A200D09BCC /* ViewModel */,
 				F42AD2FD25F917A600D09BCC /* View */,
 				F4AC30B325F9861E00D73103 /* TableView */,
@@ -225,8 +224,8 @@
 			children = (
 				F49F284F25F913C30036D68D /* AppDelegate.swift */,
 				F49F285125F913C30036D68D /* SceneDelegate.swift */,
-				F49F285325F913C30036D68D /* ViewController.swift */,
 				F4589EE325FA32EC00059CE5 /* README.md */,
+				F42AD2FB25F9179D00D09BCC /* Model */,
 				F42AD2FA25F9179A00D09BCC /* Main */,
 				F4AC30A425F9752800D73103 /* Details */,
 				F49F285525F913C30036D68D /* Main.storyboard */,
@@ -235,6 +234,7 @@
 				F49F285825F913C70036D68D /* Assets.xcassets */,
 				F49F285A25F913C70036D68D /* LaunchScreen.storyboard */,
 				F49F285D25F913C70036D68D /* Info.plist */,
+				F4949C3325FCF9DB00E187B9 /* iOSTaskCoreData.xcdatamodeld */,
 			);
 			path = iOSTask;
 			sourceTree = "<group>";
@@ -261,7 +261,6 @@
 			isa = PBXGroup;
 			children = (
 				F4AC30AE25F97C8D00D73103 /* API */,
-				F4AC30A725F9753D00D73103 /* Model */,
 				F4AC30A625F9753800D73103 /* ViewModel */,
 				F4AC30A525F9753500D73103 /* View */,
 				F4589EE525FA3E8100059CE5 /* TableView */,
@@ -284,13 +283,6 @@
 				F4AC30AC25F97C3300D73103 /* DetailsViewModel.swift */,
 			);
 			path = ViewModel;
-			sourceTree = "<group>";
-		};
-		F4AC30A725F9753D00D73103 /* Model */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Model;
 			sourceTree = "<group>";
 		};
 		F4AC30AE25F97C8D00D73103 /* API */ = {
@@ -491,8 +483,8 @@
 				F4AC309D25F9368A00D73103 /* TableViewCell.swift in Sources */,
 				F42AD30F25F91BDC00D09BCC /* MainViewModel.swift in Sources */,
 				F42AD31425F91C5000D09BCC /* UserDetails.swift in Sources */,
+				F4949C3525FCF9DB00E187B9 /* iOSTaskCoreData.xcdatamodeld in Sources */,
 				F4C567C625FA414A008CE5A0 /* DetailsTableController.swift in Sources */,
-				F49F285425F913C30036D68D /* ViewController.swift in Sources */,
 				F42AD30A25F9197500D09BCC /* MainVC.swift in Sources */,
 				F400C4DB25FBD872007CA078 /* TableViewPostCell.swift in Sources */,
 				F4AC30A925F9755500D73103 /* SendMail.swift in Sources */,
@@ -614,7 +606,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.1;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -669,7 +661,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.1;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -845,6 +837,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		F4949C3325FCF9DB00E187B9 /* iOSTaskCoreData.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				F4949C3425FCF9DB00E187B9 /* iOSTaskCoreData.xcdatamodel */,
+			);
+			currentVersion = F4949C3425FCF9DB00E187B9 /* iOSTaskCoreData.xcdatamodel */;
+			path = iOSTaskCoreData.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = F49F284425F913C30036D68D /* Project object */;
 }
