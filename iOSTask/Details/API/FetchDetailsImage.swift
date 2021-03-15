@@ -21,7 +21,7 @@ class FetchImage {
                 
                 //Request error
                 if error != nil {
-                    completion(false, nil, error!.localizedDescription)
+                    completion(false, nil, error!.localizedDescription ?? "Image data request error")
                     return
                 }
                 

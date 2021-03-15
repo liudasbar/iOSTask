@@ -9,6 +9,7 @@ import Foundation
 import SystemConfiguration
 
 class NetworkReachability {
+    /// Check for network status (online / offline)
     func isConnectedToNetwork() -> Bool {
         var zeroAddress = sockaddr_in()
         zeroAddress.sin_len = UInt8(MemoryLayout<sockaddr_in>.size)

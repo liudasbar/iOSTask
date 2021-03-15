@@ -15,6 +15,8 @@ protocol Coordinator {
 
 /// Coordinator for navigation between main and details VC
 class MainCoordinator: Coordinator {
+    
+    /// Coordinator function to go to Details VC
     func goToDetails(selfVC: UIViewController, userID: Int, postID: Int) {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         

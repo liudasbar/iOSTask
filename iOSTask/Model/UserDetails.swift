@@ -7,7 +7,7 @@
 
 import Foundation
 
-// MARK: - UserDetails
+/// User details model
 struct UserDetailsStruct: Codable {
     let id: Int
     let name, username, email: String
@@ -18,18 +18,18 @@ struct UserDetailsStruct: Codable {
 
 typealias UsersDetails = [UserDetailsStruct]
 
-// MARK: - Address
+/// Address (parent of UserDetailsStruct) model
 struct AddressStruct: Codable {
     let street, suite, city, zipcode: String
     let geo: GeoStruct
 }
 
-// MARK: - Geo
+/// Geo (parent of AddressStruct) model
 struct GeoStruct: Codable {
     let lat, lng: String
 }
 
-// MARK: - Company
+/// Company (parent of UserDetailsStruct) model
 struct CompanyStruct: Codable {
     let name, catchPhrase, bs: String
 }

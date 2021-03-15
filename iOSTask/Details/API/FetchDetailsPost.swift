@@ -21,7 +21,7 @@ class FetchPost {
                 
                 //Request error
                 if error != nil {
-                    completion(false, nil, error?.localizedDescription)
+                    completion(false, nil, error?.localizedDescription ?? "Post data request error")
                     return
                 }
                 

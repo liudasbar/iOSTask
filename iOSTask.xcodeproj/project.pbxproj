@@ -18,6 +18,8 @@
 		F42AD31925F9205B00D09BCC /* FetchPostsData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F42AD31825F9205B00D09BCC /* FetchPostsData.swift */; };
 		F42AD35525F9297400D09BCC /* MainTableController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F42AD35425F9297400D09BCC /* MainTableController.swift */; };
 		F445C35525FF8634000EC1CC /* testNetworkRaechability.swift in Sources */ = {isa = PBXBuildFile; fileRef = F445C35425FF8634000EC1CC /* testNetworkRaechability.swift */; };
+		F445C37725FF8DAE000EC1CC /* MainViewModelRequestAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = F445C37625FF8DAE000EC1CC /* MainViewModelRequestAPI.swift */; };
+		F445C37F25FF8E2F000EC1CC /* DetailsViewModelRequestAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = F445C37E25FF8E2F000EC1CC /* DetailsViewModelRequestAPI.swift */; };
 		F4589EE425FA32EC00059CE5 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = F4589EE325FA32EC00059CE5 /* README.md */; };
 		F4589EE725FA3ECE00059CE5 /* TableViewFirstCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4589EE625FA3ECE00059CE5 /* TableViewFirstCell.swift */; };
 		F4589EE925FA3EDB00059CE5 /* TableViewDataCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4589EE825FA3EDB00059CE5 /* TableViewDataCell.swift */; };
@@ -102,6 +104,8 @@
 		F445C35225FF8634000EC1CC /* testNetworkRaechability.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = testNetworkRaechability.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		F445C35425FF8634000EC1CC /* testNetworkRaechability.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = testNetworkRaechability.swift; sourceTree = "<group>"; };
 		F445C35625FF8634000EC1CC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F445C37625FF8DAE000EC1CC /* MainViewModelRequestAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModelRequestAPI.swift; sourceTree = "<group>"; };
+		F445C37E25FF8E2F000EC1CC /* DetailsViewModelRequestAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsViewModelRequestAPI.swift; sourceTree = "<group>"; };
 		F4589EE325FA32EC00059CE5 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = SOURCE_ROOT; };
 		F4589EE625FA3ECE00059CE5 /* TableViewFirstCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewFirstCell.swift; sourceTree = "<group>"; };
 		F4589EE825FA3EDB00059CE5 /* TableViewDataCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewDataCell.swift; sourceTree = "<group>"; };
@@ -130,8 +134,6 @@
 		F4A4B3AA25FF699700D68D0C /* testDataRequestsAPI.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = testDataRequestsAPI.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		F4A4B3AC25FF699800D68D0C /* testDataRequestsAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = testDataRequestsAPI.swift; sourceTree = "<group>"; };
 		F4A4B3AE25FF699800D68D0C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		F4A4B3C725FF766000D68D0C /* testNetworkReachability.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = testNetworkReachability.swift; sourceTree = "<group>"; };
-		F4A4B3C925FF766000D68D0C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F4AC309C25F9368A00D73103 /* TableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewCell.swift; sourceTree = "<group>"; };
 		F4AC30A225F9659800D73103 /* CheckInternetConnection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckInternetConnection.swift; sourceTree = "<group>"; };
 		F4AC30A825F9755500D73103 /* SendMail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendMail.swift; sourceTree = "<group>"; };
@@ -232,6 +234,7 @@
 			isa = PBXGroup;
 			children = (
 				F42AD30E25F91BDC00D09BCC /* MainViewModel.swift */,
+				F445C37625FF8DAE000EC1CC /* MainViewModelRequestAPI.swift */,
 				F486ACD125FE41690032FCB8 /* MainViewModelPostsDB.swift */,
 				F486ACD625FE57250032FCB8 /* MainViewModelUsersDetailsDB.swift */,
 			);
@@ -294,7 +297,6 @@
 				F49F286525F913C70036D68D /* testRequestsAPI */,
 				F4A4B3AB25FF699800D68D0C /* testDataRequestsAPI */,
 				F4A4B39825FF060E00D68D0C /* testErrorRequestsAPI */,
-				F4A4B3C625FF765F00D68D0C /* testNetworkReachability */,
 				F445C35325FF8634000EC1CC /* testNetworkRaechability */,
 			);
 			path = Tests;
@@ -370,15 +372,6 @@
 			path = testDataRequestsAPI;
 			sourceTree = "<group>";
 		};
-		F4A4B3C625FF765F00D68D0C /* testNetworkReachability */ = {
-			isa = PBXGroup;
-			children = (
-				F4A4B3C725FF766000D68D0C /* testNetworkReachability.swift */,
-				F4A4B3C925FF766000D68D0C /* Info.plist */,
-			);
-			path = testNetworkReachability;
-			sourceTree = "<group>";
-		};
 		F4A4B3DD25FF7D2900D68D0C /* Other */ = {
 			isa = PBXGroup;
 			children = (
@@ -412,6 +405,7 @@
 			isa = PBXGroup;
 			children = (
 				F4AC30AC25F97C3300D73103 /* DetailsViewModel.swift */,
+				F445C37E25FF8E2F000EC1CC /* DetailsViewModelRequestAPI.swift */,
 				F486ACDB25FE710E0032FCB8 /* DetailsViewModelPostDB.swift */,
 				F486ACE025FE711A0032FCB8 /* DetailsViewModelUserDetailsDB.swift */,
 			);
@@ -722,6 +716,7 @@
 				F486ACE125FE711B0032FCB8 /* DetailsViewModelUserDetailsDB.swift in Sources */,
 				F4AC30A325F9659800D73103 /* CheckInternetConnection.swift in Sources */,
 				F4AC30B525F987D100D73103 /* FetchUsersData.swift in Sources */,
+				F445C37F25FF8E2F000EC1CC /* DetailsViewModelRequestAPI.swift in Sources */,
 				F4AC309D25F9368A00D73103 /* TableViewCell.swift in Sources */,
 				F42AD30F25F91BDC00D09BCC /* MainViewModel.swift in Sources */,
 				F42AD31425F91C5000D09BCC /* UserDetails.swift in Sources */,
@@ -743,6 +738,7 @@
 				F486ACD725FE57250032FCB8 /* MainViewModelUsersDetailsDB.swift in Sources */,
 				F4589EE925FA3EDB00059CE5 /* TableViewDataCell.swift in Sources */,
 				F486ACD225FE41690032FCB8 /* MainViewModelPostsDB.swift in Sources */,
+				F445C37725FF8DAE000EC1CC /* MainViewModelRequestAPI.swift in Sources */,
 				F486ACDC25FE710E0032FCB8 /* DetailsViewModelPostDB.swift in Sources */,
 				F4589EE725FA3ECE00059CE5 /* TableViewFirstCell.swift in Sources */,
 				F4AC30B025F97C9800D73103 /* FetchDetailsImage.swift in Sources */,
