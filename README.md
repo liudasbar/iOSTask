@@ -40,7 +40,7 @@ LinkedIn: Liudas Baronas
 
 - Embedding everything into the navigation controller
 - Design updates
-- Reactive value observation approach using Hanson framework ( https://github.com/blendle/Hanson )
+- Data binding - value observation approach using Hanson framework ( https://github.com/blendle/Hanson )
 - Posts and user details in details VC
 
 ### 14 hours:
