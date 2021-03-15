@@ -23,7 +23,6 @@ LinkedIn: Liudas Baronas
 - Table view pull to refresh
 - Fetching posts and user details API data
 - Displaying data
-- Non-reactive native value observation
 - Main table view cell design
 - Loading state
 - Error dialogs
