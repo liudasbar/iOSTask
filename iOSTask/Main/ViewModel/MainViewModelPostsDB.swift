@@ -32,7 +32,7 @@ extension MainViewModel {
         for postData in self.postsData.value {
             
             //Create object in the context
-            let postObject = Post(context: postsContext)
+            let postObject = Post(context: privateMOC)
             
             //Save each post data to database
             postObject.id = Int64(postData.id)
@@ -42,7 +42,7 @@ extension MainViewModel {
         }
         
         do {
-            try postsContext.save()
+            try privateMOC.save()
             
         } catch let error {
             self.delegate?.showError(title: "Error saving posts data to offline database", message: "Reason: \(error.localizedDescription)")
