@@ -56,5 +56,6 @@ Unresolved problem: sometimes random EXC_BAD_ACCESS errors are thrown out within
 
 ### 4hours:
 
-- Unit tests
 - Code revision to make sure everything left is necessary and clean
+- Unit tests
+- Code coverage based on tests
