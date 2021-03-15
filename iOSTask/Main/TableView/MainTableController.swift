@@ -28,6 +28,7 @@ class MainTableViewDataSource: NSObject, UITableViewDataSource {
         cell.titleLabel.text = post.title
         cell.bodyLabel.text = post.body
         
+        //Show user details on cell only if userID matches its correct value
         for userDetails in viewModel.usersData.value {
             if post.userID == userDetails.id {
                 cell.userDataLabel.text = userDetails.username + " - " + userDetails.company.name

@@ -23,7 +23,7 @@ class FetchPosts {
                 
                 //Request error
                 if error != nil {
-                    completion(false, nil, error?.localizedDescription ?? "Posts request error")
+                    completion(false, nil, error!.localizedDescription)
                     return
                 }
                 

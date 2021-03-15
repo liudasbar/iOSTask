@@ -23,7 +23,7 @@ class FetchUserData {
                 
                 //Request error
                 if error != nil {
-                    completion(false, nil, error?.localizedDescription ?? "User data request error")
+                    completion(false, nil, error!.localizedDescription)
                     return
                 }
                 
