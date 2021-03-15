@@ -40,7 +40,6 @@ class FetchUserData {
                             completion(false, nil, error.localizedDescription)
                         }
                     }
-                    
                 }
             })
             dataTask.resume()

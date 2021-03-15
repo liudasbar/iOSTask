@@ -12,9 +12,7 @@ class FetchPost {
     /// Fetch post
     func getPost(postID: Int, completion: @escaping (Bool, PostStruct?, String?) -> Void) {
         
-        var request = URLRequest(url: URL(string: "https://jsonplaceholder.typicode.com/posts/\(postID)")! as URL, timeoutInterval: 5.0)
-        
-        request.httpMethod = "GET"
+        let request = URLRequest(url: URL(string: "https://jsonplaceholder.typicode.com/posts/\(postID)")! as URL, timeoutInterval: 5.0)
         
         DispatchQueue.global(qos: .userInitiated).async {
             

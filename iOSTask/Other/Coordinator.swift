@@ -26,6 +26,4 @@ class MainCoordinator: Coordinator {
             selfVC.showDetailViewController(detailsVC, sender: nil)
         }
     }
-    
-    
 }

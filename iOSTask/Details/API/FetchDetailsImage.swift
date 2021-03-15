@@ -12,7 +12,7 @@ class FetchImage {
     /// Fetch image
     func getImage(userID: Int, completion: @escaping (Bool, Data?, String?) -> Void) {
         
-        let request = URLRequest(url: URL(string: "https://source.unsplash.com/collection/542909/?sig=\(String(userID))")! as URL, cachePolicy: .useProtocolCachePolicy, timeoutInterval: 5.0)
+        let request = URLRequest(url: URL(string: "https://source.unsplash.com/collection/542909/?sig=\(userID)")! as URL, timeoutInterval: 5.0)
         
         DispatchQueue.global(qos: .userInitiated).async {
             //Network request to fetch image
