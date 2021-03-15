@@ -1,5 +1,5 @@
 # iOSTask
-iOS Junior/Mid position task (MVVM)
+Swift Junior/Mid position task (MVVM)
 
 
 
