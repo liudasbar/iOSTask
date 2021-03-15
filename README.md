@@ -1,5 +1,5 @@
 # iOSTask
-iOS Junior position task (MVVM + Reactive data binding)
+iOS Junior position task (MVVM)
 
 
 
