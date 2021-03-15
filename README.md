@@ -52,10 +52,7 @@ LinkedIn: Liudas Baronas
 - Core data thread concurrency
 - Core data combination with API data fetch
 
-Unresolved problem: sometimes random EXC_BAD_ACCESS errors are thrown out within Core Data saving functions.
-
 ### 4hours:
 
 - Code revision to make sure everything left is necessary and clean
 - Unit tests
-- Code coverage based on tests
