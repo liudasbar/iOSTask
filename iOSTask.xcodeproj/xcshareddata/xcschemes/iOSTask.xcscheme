@@ -27,7 +27,17 @@
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       shouldUseLaunchSchemeArgsEnv = "YES"
-      codeCoverageEnabled = "YES">
+      codeCoverageEnabled = "YES"
+      onlyGenerateCoverageForSpecifiedTargets = "YES">
+      <CodeCoverageTargets>
+         <BuildableReference
+            BuildableIdentifier = "primary"
+            BlueprintIdentifier = "F49F284B25F913C30036D68D"
+            BuildableName = "iOSTask.app"
+            BlueprintName = "iOSTask"
+            ReferencedContainer = "container:iOSTask.xcodeproj">
+         </BuildableReference>
+      </CodeCoverageTargets>
       <Testables>
          <TestableReference
             skipped = "NO">
@@ -51,6 +61,56 @@
                BlueprintIdentifier = "F462B98325FED79E009849D3"
                BuildableName = "mappingTestJSON.xctest"
                BlueprintName = "mappingTestJSON"
+               ReferencedContainer = "container:iOSTask.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "F4A4B39625FF060E00D68D0C"
+               BuildableName = "testErrorRequestsAPI.xctest"
+               BlueprintName = "testErrorRequestsAPI"
+               ReferencedContainer = "container:iOSTask.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "F4A4B3A925FF699700D68D0C"
+               BuildableName = "testDataRequestsAPI.xctest"
+               BlueprintName = "testDataRequestsAPI"
+               ReferencedContainer = "container:iOSTask.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "F4A4B3C425FF765F00D68D0C"
+               BuildableName = "testDatabaseDataRemoval.xctest"
+               BlueprintName = "testDatabaseDataRemoval"
+               ReferencedContainer = "container:iOSTask.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "F445C30F25FF7FB4000EC1CC"
+               BuildableName = "testDatabaseFunctions.xctest"
+               BlueprintName = "testDatabaseFunctions"
+               ReferencedContainer = "container:iOSTask.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "F445C35125FF8634000EC1CC"
+               BuildableName = "testNetworkRaechability.xctest"
+               BlueprintName = "testNetworkRaechability"
                ReferencedContainer = "container:iOSTask.xcodeproj">
             </BuildableReference>
          </TestableReference>

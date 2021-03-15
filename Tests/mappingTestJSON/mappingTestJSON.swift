@@ -12,7 +12,7 @@ var userDetailsStruct: UserDetailsStruct!
 var postStruct: PostStruct!
 var fetchUserData: FetchUserData!
 
-class mappingTestJSON: XCTestCase {
+class MappingTestJSON: XCTestCase {
 
     override func setUpWithError() throws {
         super.setUp()
