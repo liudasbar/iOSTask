@@ -59,8 +59,6 @@ class DetailsViewModel: NSObject {
                 } else {
                     self.delegate?.showError(title: "Image could not be loaded", message: "Error occured. Description: \(errorMessage!)")
                 }
-            } else {
-                //Network unreachable
             }
         }
     }
@@ -75,6 +73,7 @@ class DetailsViewModel: NSObject {
                 if status {
                     //If status is OK - assign API data to postData
                     self.postData.value = postData!
+                    self.mainViewModel.getPosts(pullToRefresh: false)
                     self.delegate?.stopRefresh()
                 } else {
                     self.delegate?.showError(title: "Post could not be loaded", message: "Error occured. Description: \(errorMessage!)")
@@ -83,6 +82,7 @@ class DetailsViewModel: NSObject {
                 //Network unreachable
                 self.mainViewModel.getPosts(pullToRefresh: false)
                 self.mainViewModel.getUsersDetails()
+                self.delegate?.stopRefresh()
                 
                 self.retrieveDatabasePost(postID: postID)
             }
@@ -99,6 +99,7 @@ class DetailsViewModel: NSObject {
                 if status {
                     //If status is OK - assign API data to userData
                     self.userData.value = singleUserData!
+                    self.mainViewModel.getUsersDetails()
                     self.delegate?.stopRefresh()
                 } else {
                     self.delegate?.showError(title: "User data could not be loaded", message: "Error occured. Description: \(errorMessage!)")
@@ -106,6 +107,7 @@ class DetailsViewModel: NSObject {
             } else {
                 //Network unreachable
                 self.retrieveDatabaseUserDetails(userID: userID)
+                self.delegate?.stopRefresh()
             }
         }
     }

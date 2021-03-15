@@ -33,18 +33,23 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "F49F286125F913C70036D68D"
-               BuildableName = "iOSTaskTests.xctest"
-               BlueprintName = "iOSTaskTests"
+               BuildableName = "testRequestsAPI.xctest"
+               BlueprintName = "testRequestsAPI"
                ReferencedContainer = "container:iOSTask.xcodeproj">
             </BuildableReference>
+            <SkippedTests>
+               <Test
+                  Identifier = "iOSTaskTests">
+               </Test>
+            </SkippedTests>
          </TestableReference>
          <TestableReference
             skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "F49F286C25F913C70036D68D"
-               BuildableName = "iOSTaskUITests.xctest"
-               BlueprintName = "iOSTaskUITests"
+               BlueprintIdentifier = "F462B98325FED79E009849D3"
+               BuildableName = "mappingTestJSON.xctest"
+               BlueprintName = "mappingTestJSON"
                ReferencedContainer = "container:iOSTask.xcodeproj">
             </BuildableReference>
          </TestableReference>
