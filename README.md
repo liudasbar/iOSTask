@@ -2,6 +2,12 @@
 Swift Junior/Mid position task (MVVM)
 
 
+## Project setup:
+
+To run the project, open the file named:
+
+iOSTask.xcworkspace
+
 
 ## Connect:
 
