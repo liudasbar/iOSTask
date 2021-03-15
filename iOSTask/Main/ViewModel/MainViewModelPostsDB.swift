@@ -11,8 +11,6 @@ import CoreData
 extension MainViewModel {
     /// Remove all existing Core Data posts
     func removeDatabasePosts() {
-        print("Removing database posts")
-        
         let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Post")
         let deleteRequest = NSBatchDeleteRequest(fetchRequest: fetchRequest)
         
@@ -27,13 +25,14 @@ extension MainViewModel {
     
     /// Save Core Data posts
     func saveDatabasePosts() {
-        print("Saving database posts")
+        let privateMOC = NSManagedObjectContext(concurrencyType: .privateQueueConcurrencyType)
+        privateMOC.parent = postsContext
         
         //Iterate through all posts
         for postData in self.postsData.value {
             
             //Create object in the context
-            let postObject = Post(context: self.postsContext)
+            let postObject = Post(context: postsContext)
             
             //Save each post data to database
             postObject.id = Int64(postData.id)
@@ -43,7 +42,7 @@ extension MainViewModel {
         }
         
         do {
-            try self.postsContext.save()
+            try postsContext.save()
             
         } catch let error {
             self.delegate?.showError(title: "Error saving posts data to offline database", message: "Reason: \(error.localizedDescription)")
@@ -52,8 +51,6 @@ extension MainViewModel {
     
     /// Retrieve Core Data posts
     func retrieveDatabasePosts() {
-        print("Retrieving database posts")
-        
         do {
             let postsEntity = try self.postsContext.fetch(Post.fetchRequest())
             

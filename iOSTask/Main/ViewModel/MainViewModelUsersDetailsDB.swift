@@ -11,8 +11,6 @@ import CoreData
 extension MainViewModel {
     /// Remove all existing Core Data users details
     func removeDatabaseUersDetails() {
-        print("Removing database users details")
-        
         let fetchRequestUserDetails = NSFetchRequest<NSFetchRequestResult>(entityName: "UserDetails")
         let deleteRequestUserDetails = NSBatchDeleteRequest(fetchRequest: fetchRequestUserDetails)
         
@@ -27,13 +25,14 @@ extension MainViewModel {
     
     /// Save Core Data users details
     func saveUsersDetailsPosts() {
-        print("Saving database users details")
+        let privateMOC = NSManagedObjectContext(concurrencyType: .privateQueueConcurrencyType)
+        privateMOC.parent = userDetailsContext
         
         //Iterate through all posts
         for userDetailsData in self.usersData.value {
             
             //Create object in the context
-            let userDetailsObject = UserDetails(context: self.userDetailsContext)
+            let userDetailsObject = UserDetails(context: privateMOC)
             
             //Save each post data to database
             userDetailsObject.id = Int64(userDetailsData.id)
@@ -54,7 +53,7 @@ extension MainViewModel {
             
         }
         do {
-            try self.userDetailsContext.save()
+            try privateMOC.save()
             
         } catch let error {
             self.delegate?.showError(title: "Error saving users data to offline database", message: "Reason: \(error.localizedDescription)")
@@ -65,8 +64,6 @@ extension MainViewModel {
     
     /// Retrieve Core Data users details
     func retrieveDatabaseUsersDetails() {
-        print("Retrieving database users details")
-        
         do {
             let usersDetailsEntity = try self.userDetailsContext.fetch(UserDetails.fetchRequest())
             
