@@ -1,6 +1,6 @@
 # iOSTask
 
-Swift Junior/Mid position task
+Swift Junior/Mid position task (MVVM)
 
 
 
@@ -14,7 +14,7 @@ __iOSTask.xcworkspace__
 
 ## Connect:
 
-E-mail: me@liudasbar.dev
+E-mail: liudasbar@gmail.com
 
 LinkedIn: Liudas Baronas
 
