@@ -1,5 +1,3 @@
-//
-//  DetailsVC.swift
 //  iOSTask
 //
 //  Created by LiudasBar on 2021-03-10.
@@ -12,7 +10,7 @@ class DetailsVC: UIViewController, MFMailComposeViewControllerDelegate, APIActiv
     
     var coordinator: MainCoordinator!
     
-    var mail: Mail!
+    var mail: SendMail!
     
     var detailsViewModel: DetailsViewModel!
     var mainViewModel: MainViewModel!
@@ -38,7 +36,7 @@ class DetailsVC: UIViewController, MFMailComposeViewControllerDelegate, APIActiv
         
         detailsViewModel = DetailsViewModel()
         mainViewModel = MainViewModel()
-        mail = Mail()
+        mail = SendMail()
         
         delegatesInit()
         fetchData()

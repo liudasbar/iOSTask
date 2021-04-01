@@ -1,5 +1,3 @@
-//
-//  FetchData.swift
 //  iOSTask
 //
 //  Created by LiudasBar on 2021-03-10.
@@ -7,7 +5,7 @@
 
 import Foundation
 
-class FetchPosts {
+class FetchPostsData {
     
     /// Fetch posts
     func getPosts(completion: @escaping (Bool, Posts?, String?) -> Void) {
@@ -40,7 +38,6 @@ class FetchPosts {
                             completion(false, nil, error.localizedDescription)
                         }
                     }
-                    
                 }
             })
             dataTask.resume()

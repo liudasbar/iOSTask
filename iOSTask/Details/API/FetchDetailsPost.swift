@@ -1,5 +1,3 @@
-//
-//  FetchDetailsPost.swift
 //  iOSTask
 //
 //  Created by LiudasBar on 2021-03-13.
@@ -7,7 +5,7 @@
 
 import Foundation
 
-class FetchPost {
+class FetchDetailsPost {
     
     /// Fetch post
     func getPost(postID: Int, completion: @escaping (Bool, PostStruct?, String?) -> Void) {

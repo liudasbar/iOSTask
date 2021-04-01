@@ -1,5 +1,3 @@
-//
-//  SendMail.swift
 //  iOSTask
 //
 //  Created by LiudasBar on 2021-03-10.
@@ -8,7 +6,7 @@
 import Foundation
 import MessageUI
 
-class Mail {
+class SendMail {
     var delegate: DetailsVC?
     
     /// Send mail execution function

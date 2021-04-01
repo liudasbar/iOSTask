@@ -1,5 +1,3 @@
-//
-//  DetailsViewModel.swift
 //  iOSTask
 //
 //  Created by LiudasBar on 2021-03-11.
@@ -18,9 +16,9 @@ class DetailsViewModel: NSObject {
     let postsContext = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     let userDetailsContext = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     
-    var imageAPI: FetchImage!
+    var imageAPI: FetchDetailsImage!
     var userAPI: FetchUserData!
-    var postAPI: FetchPost!
+    var postAPI: FetchDetailsPost!
     var mainViewModel: MainViewModel!
     var delegate: APIActivity?
     
@@ -31,9 +29,9 @@ class DetailsViewModel: NSObject {
     override init() {
         super.init()
         
-        imageAPI = FetchImage()
+        imageAPI = FetchDetailsImage()
         userAPI = FetchUserData()
-        postAPI = FetchPost()
+        postAPI = FetchDetailsPost()
         mainViewModel = MainViewModel()
     }
 }

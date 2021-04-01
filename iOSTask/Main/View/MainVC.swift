@@ -1,5 +1,3 @@
-//
-//  MainVC.swift
 //  iOSTask
 //
 //  Created by LiudasBar on 2021-03-10.

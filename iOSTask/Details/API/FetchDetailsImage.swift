@@ -1,5 +1,3 @@
-//
-//  FetchImage.swift
 //  iOSTask
 //
 //  Created by LiudasBar on 2021-03-11.
@@ -7,7 +5,7 @@
 
 import Foundation
 
-class FetchImage {
+class FetchDetailsImage {
     
     /// Fetch image
     func getImage(userID: Int, completion: @escaping (Bool, Data?, String?) -> Void) {

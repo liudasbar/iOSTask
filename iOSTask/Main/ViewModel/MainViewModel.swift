@@ -1,5 +1,3 @@
-//
-//  MainViewModel.swift
 //  iOSTask
 //
 //  Created by LiudasBar on 2021-03-10.
@@ -21,7 +19,7 @@ class MainViewModel: NSObject {
     let postsContext = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     let userDetailsContext = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     
-    var postsAPI: FetchPosts!
+    var postsAPI: FetchPostsData!
     var userDetailsAPI: FetchUserData!
     var delegate: Activity?
     
@@ -31,7 +29,7 @@ class MainViewModel: NSObject {
     override init() {
         super.init()
         
-        postsAPI = FetchPosts()
+        postsAPI = FetchPostsData()
         userDetailsAPI = FetchUserData()
     }
 }
