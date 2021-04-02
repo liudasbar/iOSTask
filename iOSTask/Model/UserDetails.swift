@@ -14,8 +14,6 @@ struct UserDetailsStruct: Codable {
     let company: CompanyStruct
 }
 
-typealias UsersDetails = [UserDetailsStruct]
-
 /// Address (parent of UserDetailsStruct) model
 struct AddressStruct: Codable {
     let street, suite, city, zipcode: String
