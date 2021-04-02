@@ -16,10 +16,10 @@ class DetailsViewModel: NSObject {
     let postsContext = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     let userDetailsContext = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     
-    var imageAPI: FetchDetailsImage!
-    var userAPI: FetchUserData!
-    var postAPI: FetchDetailsPost!
-    var mainViewModel: MainViewModel!
+    var imageAPI: FetchDetailsImage?
+    var userAPI: FetchUserData?
+    var postAPI: FetchDetailsPost?
+    var mainViewModel: MainViewModel?
     var delegate: APIActivity?
     
     var postData = Observable(PostStruct(userID: 0, id: 0, title: "", body: ""))

@@ -19,8 +19,8 @@ class MainViewModel: NSObject {
     let postsContext = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     let userDetailsContext = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     
-    var postsAPI: FetchPostsData!
-    var userDetailsAPI: FetchUserData!
+    var postsAPI: FetchPostsData?
+    var userDetailsAPI: FetchUserData?
     var delegate: Activity?
     
     var postsData = Observable([PostStruct]())

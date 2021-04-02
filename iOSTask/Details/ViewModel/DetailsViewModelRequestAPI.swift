@@ -12,7 +12,7 @@ extension DetailsViewModel {
         
         //Check connection
         if NetworkReachability().isConnectedToNetwork() {
-            self.imageAPI.getImage(userID: userID) { (status, imageData, errorMessage) in
+            self.imageAPI!.getImage(userID: userID) { (status, imageData, errorMessage) in
                 
                 if status {
                     //If status is OK - assign API data to imageData
@@ -30,12 +30,12 @@ extension DetailsViewModel {
         
         //Check connection
         if NetworkReachability().isConnectedToNetwork() {
-            self.postAPI.getPost(postID: postID) { (status, postData, errorMessage) in
+            self.postAPI!.getPost(postID: postID) { (status, postData, errorMessage) in
                 
                 if status {
                     //If status is OK - assign API data to postData
                     self.postData.value = postData!
-                    self.mainViewModel.getPosts(pullToRefresh: false)
+                    self.mainViewModel!.getPosts(pullToRefresh: false)
                     self.delegate?.stopRefresh()
                 } else {
                     self.delegate?.showError(title: "Post could not be loaded", message: "Error occured. Description: \(errorMessage!)")
@@ -44,8 +44,8 @@ extension DetailsViewModel {
             
         } else {
             //Network unreachable
-            self.mainViewModel.getPosts(pullToRefresh: false)
-            self.mainViewModel.getUsersDetails()
+            self.mainViewModel!.getPosts(pullToRefresh: false)
+            self.mainViewModel!.getUsersDetails()
             self.delegate?.stopRefresh()
             
             self.retrieveDatabasePost(postID: postID)
@@ -56,12 +56,12 @@ extension DetailsViewModel {
     func getSingleUser(userID: Int) {
         
         if NetworkReachability().isConnectedToNetwork() {
-            self.userAPI.getUserData(userID: userID) { (status, singleUserData, errorMessage) in
+            self.userAPI!.getUserData(userID: userID) { (status, singleUserData, errorMessage) in
                 
                 if status {
                     //If status is OK - assign API data to userData
                     self.userData.value = singleUserData!
-                    self.mainViewModel.getUsersDetails()
+                    self.mainViewModel!.getUsersDetails()
                     self.delegate?.stopRefresh()
                 } else {
                     self.delegate?.showError(title: "User data could not be loaded", message: "Error occured. Description: \(errorMessage!)")

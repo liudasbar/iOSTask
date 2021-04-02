@@ -12,7 +12,7 @@ extension MainViewModel {
         
         //Check connection
         if NetworkReachability().isConnectedToNetwork() {
-            self.postsAPI.getPosts { (status, data, errorMessage) in
+            self.postsAPI!.getPosts { (status, data, errorMessage) in
                 
                 if pullToRefresh {
                     self.delegate?.startRefresh()
@@ -59,7 +59,7 @@ extension MainViewModel {
                 if !userIDs.contains(post.userID) {
                     userIDs.append(post.userID)
                     
-                    self.userDetailsAPI.getUserData(userID: post.userID) { (status, data, errorMessage) in
+                    self.userDetailsAPI!.getUserData(userID: post.userID) { (status, data, errorMessage) in
                         
                         if status {
                             //If status is OK - assign API data to usersData
