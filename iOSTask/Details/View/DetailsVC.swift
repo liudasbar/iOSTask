@@ -8,12 +8,12 @@ import MessageUI
 
 class DetailsVC: UIViewController, MFMailComposeViewControllerDelegate, APIActivity, UITableViewDelegate {
     
-    var coordinator: MainCoordinator!
+    var coordinator: MainCoordinator?
     
-    var mail: SendMail!
+    var mail: SendMail?
     
-    var detailsViewModel: DetailsViewModel!
-    var mainViewModel: MainViewModel!
+    var detailsViewModel: DetailsViewModel?
+    var mainViewModel: MainViewModel?
     
     var dataSource: DetailsTableViewDataSource?
     
@@ -49,38 +49,38 @@ class DetailsVC: UIViewController, MFMailComposeViewControllerDelegate, APIActiv
     /// Delegates init
     func delegatesInit() {
         tableView.delegate = self
-        detailsViewModel.delegate = self
-        mail.delegate = self
+        detailsViewModel!.delegate = self
+        mail!.delegate = self
     }
     
     /// Data fetch
     @objc func fetchData() {
-        detailsViewModel.getSingleUser(userID: userID)
-        detailsViewModel.getImage(userID: userID)
-        detailsViewModel.getPost(postID: postID)
+        detailsViewModel!.getSingleUser(userID: userID)
+        detailsViewModel!.getImage(userID: userID)
+        detailsViewModel!.getPost(postID: postID)
     }
     
     /// Set table view data source
     func setTableViewDataSource() {
-        dataSource = DetailsTableViewDataSource(viewModel: self.detailsViewModel)
+        dataSource = DetailsTableViewDataSource(viewModel: self.detailsViewModel!)
         tableView.dataSource = self.dataSource
     }
     
     /// Detect data changes and set data source + reload data
     func dataObservers() {
-        observe(detailsViewModel.postData) { postDataChange in
+        observe(detailsViewModel!.postData) { postDataChange in
             DispatchQueue.main.async {
                 self.tableView.reloadData()
             }
         }
         
-        observe(detailsViewModel.userData) { userDataChange in
+        observe(detailsViewModel!.userData) { userDataChange in
             DispatchQueue.main.async {
                 self.tableView.reloadData()
             }
         }
         
-        observe(detailsViewModel.imageData) { imageDataChange in
+        observe(detailsViewModel!.imageData) { imageDataChange in
             DispatchQueue.main.async {
                 self.tableView.reloadData()
             }
@@ -91,11 +91,11 @@ class DetailsVC: UIViewController, MFMailComposeViewControllerDelegate, APIActiv
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         
-        let user = detailsViewModel.userData.value
+        let user = detailsViewModel!.userData.value
         
         switch indexPath.row {
         case 1:
-            mail.sendMail(user.email)
+            mail!.sendMail(user.email)
         case 2:
             launchGoogleMaps(user.address.geo.lat, user.address.geo.lng)
         case 3:

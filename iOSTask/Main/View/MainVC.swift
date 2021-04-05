@@ -8,9 +8,9 @@ import Hanson
 
 class MainVC: UIViewController, Activity, UITableViewDelegate {
     
-    var coordinator: MainCoordinator!
+    var coordinator: MainCoordinator?
     
-    var mainViewModel: MainViewModel!
+    var mainViewModel: MainViewModel?
     var dataSource: MainTableViewDataSource?
     
     var refreshControl = UIRefreshControl()
@@ -35,13 +35,13 @@ class MainVC: UIViewController, Activity, UITableViewDelegate {
     
     /// Data fetch
     @objc func fetchData() {
-        mainViewModel.getPosts(pullToRefresh: false)
+        mainViewModel!.getPosts(pullToRefresh: false)
     }
     
     /// Detect data changes and set data source + reload data
     @objc func dataObservers() {
-        observe(mainViewModel.postsData) { postsChange in
-            self.observe(self.mainViewModel.usersData) { usersDataChange in
+        observe(mainViewModel!.postsData) { postsChange in
+            self.observe(self.mainViewModel!.usersData) { usersDataChange in
                 DispatchQueue.main.async {
                     self.tableView.reloadData()
                 }
@@ -54,12 +54,12 @@ class MainVC: UIViewController, Activity, UITableViewDelegate {
         tableView.deselectRow(at: indexPath, animated: true)
         
         //Coordinator approach prepare for going to details screen
-        coordinator.goToDetails(selfVC: self, userID: mainViewModel.postsData.value[indexPath.row].userID, postID: mainViewModel.postsData.value[indexPath.row].id)
+        coordinator!.goToDetails(selfVC: self, userID: mainViewModel!.postsData.value[indexPath.row].userID, postID: mainViewModel!.postsData.value[indexPath.row].id)
     }
     
     /// Set table view data source
     func setTableViewDataSource() {
-        dataSource = MainTableViewDataSource(viewModel: self.mainViewModel)
+        dataSource = MainTableViewDataSource(viewModel: self.mainViewModel!)
         tableView.dataSource = self.dataSource
     }
     

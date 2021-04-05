@@ -10,7 +10,7 @@ extension MainVC {
     /// Delegates init
     func delegatesInit() {
         tableView.delegate = self
-        mainViewModel.delegate = self
+        mainViewModel!.delegate = self
     }
     
     /// Design init
