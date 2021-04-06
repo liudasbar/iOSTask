@@ -30,7 +30,9 @@ extension MainViewModel {
                     
                 } else {
                     self.delegate?.stopRefresh()
-                    self.delegate?.showError(title: "Posts could not be loaded", message: "Error occured. Description: \(errorMessage!)")
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
+                        self.delegate?.showError(title: "Posts could not be loaded", message: "Error occured. Description: \(errorMessage!)")
+                    }
                 }
             }
             
@@ -72,7 +74,9 @@ extension MainViewModel {
                             self.delegate?.stopRefresh()
                         } else {
                             self.delegate?.stopRefresh()
-                            self.delegate?.showError(title: "User details could not be loaded", message: "Error occured. Description: \(errorMessage!)")
+                            DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
+                                self.delegate?.showError(title: "User details could not be loaded", message: "Error occured. Description: \(errorMessage!)")
+                            }
                         }
                     }
                 }
@@ -90,7 +94,6 @@ extension MainViewModel {
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
                 self.delegate?.showError(title: "You seem to be offline", message: "Showing offline data. Please reconnect to a network for the newest information.")
             }
-            
         }
     }
 }
