@@ -8,20 +8,20 @@
 import XCTest
 @testable import iOSTask
 
-var fetchPost: FetchPost!
-var fetchPosts: FetchPosts!
-var fetchUserData: FetchUserData!
-var fetchImage: FetchImage!
+var fetchPost: FetchDetailsPost?
+var fetchPosts: FetchPostsData!
+var fetchUserData: FetchUserData?
+var fetchImage: FetchDetailsImage?
 
 class TestRequestsStatusAPI: XCTestCase {
 
     override func setUpWithError() throws {
         super.setUp()
         
-        fetchPost = FetchPost()
-        fetchPosts = FetchPosts()
+        fetchPost = FetchDetailsPost()
+        fetchPosts = FetchPostsData()
         fetchUserData = FetchUserData()
-        fetchImage = FetchImage()
+        fetchImage = FetchDetailsImage()
     }
 
     override func tearDownWithError() throws {
@@ -55,7 +55,7 @@ class TestRequestsStatusAPI: XCTestCase {
         
         let expectation = XCTestExpectation(description: "Status true for user details response")
         
-        fetchUserData.getUserData(userID: userID) { (status, data, errorMessage) in
+        fetchUserData!.getUserData(userID: userID) { (status, data, errorMessage) in
             
             if !status {
                 XCTFail("Status false with error message: \(errorMessage!)")
@@ -72,7 +72,7 @@ class TestRequestsStatusAPI: XCTestCase {
         
         let expectation = XCTestExpectation(description: "Status true for post details response")
             
-        fetchPost.getPost(postID: postID) { (status, data, errorMessage) in
+        fetchPost!.getPost(postID: postID) { (status, data, errorMessage) in
             
             if !status {
                 XCTFail("Status false with error message: \(errorMessage!)")
@@ -90,7 +90,7 @@ class TestRequestsStatusAPI: XCTestCase {
         
         let expectation = XCTestExpectation(description: "Status true for image response")
             
-        fetchImage.getImage(userID: userID) { (status, data, errorMessage) in
+        fetchImage!.getImage(userID: userID) { (status, data, errorMessage) in
             
             if !status {
                 XCTFail("Status false with error message: \(errorMessage!)")

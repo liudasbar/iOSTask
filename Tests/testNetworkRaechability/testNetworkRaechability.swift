@@ -8,7 +8,7 @@
 import XCTest
 @testable import iOSTask
 
-var reachability: NetworkReachability!
+var reachability: NetworkReachability?
 
 class TestNetworkReachability: XCTestCase {
 
@@ -19,13 +19,15 @@ class TestNetworkReachability: XCTestCase {
     }
 
     override func tearDownWithError() throws {
+        reachability = nil
+        
         super.tearDown()
     }
     
     func testNetworkOnline() throws {
         let expectation = XCTestExpectation(description: "Device is online")
         
-        if reachability.isConnectedToNetwork() {
+        if reachability!.isConnectedToNetwork() {
             expectation.fulfill()
         } else {
             XCTFail("Device is offline")

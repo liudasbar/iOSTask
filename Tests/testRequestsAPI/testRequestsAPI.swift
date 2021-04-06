@@ -8,17 +8,17 @@
 import XCTest
 @testable import iOSTask
 
-var fetchPost: FetchPost!
-var fetchPosts: FetchPosts!
-var fetchUserData: FetchUserData!
+var fetchPost: FetchDetailsPost?
+var fetchPosts: FetchPostsData?
+var fetchUserData: FetchUserData?
 
 class TestRequestsAPI: XCTestCase {
 
     override func setUpWithError() throws {
         super.setUp()
         
-        fetchPost = FetchPost()
-        fetchPosts = FetchPosts()
+        fetchPost = FetchDetailsPost()
+        fetchPosts = FetchPostsData()
         fetchUserData = FetchUserData()
     }
 

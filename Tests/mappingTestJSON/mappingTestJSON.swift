@@ -8,9 +8,9 @@
 import XCTest
 @testable import iOSTask
 
-var userDetailsStruct: UserDetailsStruct!
-var postStruct: PostStruct!
-var fetchUserData: FetchUserData!
+var userDetailsStruct: UserDetailsStruct?
+var postStruct: PostStruct?
+var fetchUserData: FetchUserData?
 
 class MappingTestJSON: XCTestCase {
 
@@ -24,6 +24,10 @@ class MappingTestJSON: XCTestCase {
     }
 
     override func tearDownWithError() throws {
+        userDetailsStruct = nil
+        postStruct = nil
+        fetchUserData = nil
+        
         super.tearDown()
     }
     
