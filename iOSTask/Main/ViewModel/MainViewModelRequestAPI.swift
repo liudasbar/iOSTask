@@ -87,7 +87,10 @@ extension MainViewModel {
             self.retrieveDatabaseUsersDetails()
             
             self.delegate?.stopRefresh()
-            self.delegate?.showError(title: "You seem to be offline", message: "Showing offline data. Please reconnect to a network for the newest information.")
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
+                self.delegate?.showError(title: "You seem to be offline", message: "Showing offline data. Please reconnect to a network for the newest information.")
+            }
+            
         }
     }
 }
