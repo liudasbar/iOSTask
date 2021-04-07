@@ -19,9 +19,13 @@ class MainCoordinator: Coordinator {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         
         if let detailsVC = storyboard.instantiateViewController(withIdentifier: "DetailsVC") as? DetailsVC {
-            detailsVC.userID = userID
-            detailsVC.coordinator = self
-            detailsVC.postID = postID
+            
+            let vm = DetailsViewModel()
+            vm.userID = userID
+            vm.postID = postID
+            
+            detailsVC.detailsViewModel = vm
+            selfVC.present(detailsVC, animated: true, completion: nil)
             
             selfVC.showDetailViewController(detailsVC, sender: nil)
         }

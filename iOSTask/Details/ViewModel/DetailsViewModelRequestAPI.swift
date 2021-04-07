@@ -7,6 +7,14 @@ import Foundation
 import UIKit
 
 extension DetailsViewModel {
+    
+    /// Get all data from API
+    func fetchData() {
+        getSingleUser(userID: userID!)
+        getImage(userID: userID!)
+        getPost(postID: postID!)
+    }
+    
     /// Get image
     func getImage(userID: Int) {
         

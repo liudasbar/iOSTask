@@ -8,17 +8,11 @@ import MessageUI
 
 class DetailsVC: UIViewController, MFMailComposeViewControllerDelegate, APIActivity, UITableViewDelegate {
     
-    var coordinator: MainCoordinator?
-    
     var mail: SendMail?
     
     var detailsViewModel: DetailsViewModel?
-    var mainViewModel: MainViewModel?
     
     var dataSource: DetailsTableViewDataSource?
-    
-    var userID = Int()
-    var postID = Int()
     
     @IBOutlet weak var tableView: UITableView!
     
@@ -34,8 +28,6 @@ class DetailsVC: UIViewController, MFMailComposeViewControllerDelegate, APIActiv
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        detailsViewModel = DetailsViewModel()
-        mainViewModel = MainViewModel()
         mail = SendMail()
         
         delegatesInit()
@@ -55,9 +47,7 @@ class DetailsVC: UIViewController, MFMailComposeViewControllerDelegate, APIActiv
     
     /// Data fetch
     @objc func fetchData() {
-        detailsViewModel!.getSingleUser(userID: userID)
-        detailsViewModel!.getImage(userID: userID)
-        detailsViewModel!.getPost(postID: postID)
+        detailsViewModel!.fetchData()
     }
     
     /// Set table view data source

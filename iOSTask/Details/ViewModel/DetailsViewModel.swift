@@ -22,6 +22,9 @@ class DetailsViewModel: NSObject {
     var mainViewModel: MainViewModel?
     var delegate: APIActivity?
     
+    var userID: Int?
+    var postID: Int?
+    
     var postData = Observable(PostStruct(userID: 0, id: 0, title: "", body: ""))
     var userData = Observable(UserDetailsStruct(id: 0, name: "", username: "", email: "", address: AddressStruct(street: "", suite: "", city: "", zipcode: "", geo: GeoStruct(lat: "", lng: "")), phone: "", website: "", company: CompanyStruct(name: "", catchPhrase: "", bs: "")))
     var imageData = Observable(Data())
