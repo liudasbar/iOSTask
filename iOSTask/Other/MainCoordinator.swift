@@ -26,8 +26,6 @@ class MainCoordinator: Coordinator {
             
             detailsVC.detailsViewModel = vm
             selfVC.present(detailsVC, animated: true, completion: nil)
-            
-            selfVC.showDetailViewController(detailsVC, sender: nil)
         }
     }
 }
